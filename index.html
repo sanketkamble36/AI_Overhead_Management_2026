@@ -1,1 +1,2244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🤖 SAP Management Accounting – AI Agents &amp; Assistants | June 2026</title>
+  <style>
+    /* ── SAP Brand Fonts ─────────────────────────────────────────── */
+    @import url('https://fonts.googleapis.com/css2?family=72:wght@300;400;600;700&display=swap');
 
+    :root {
+      --sap-blue:        #0070F2;
+      --sap-blue-dark:   #0040B0;
+      --sap-joule-purple:#6A2C8E;
+      --sap-purple-mid:  #8B3FBF;
+      --sap-purple-light:#C9A0DC;
+      --sap-navy:        #1D2D3E;
+      --sap-text:        #32363A;
+      --sap-text-subtle: #6A6D70;
+      --sap-bg:          #F5F6F7;
+      --sap-bg-white:    #FFFFFF;
+      --sap-border:      #D9DBDD;
+      --sap-green-ga:    #188918;
+      --sap-bg-ga:       #E8F5E9;
+      --sap-orange-hold: #D14900;
+      --sap-bg-hold:     #FFF3E0;
+      --sap-indigo-dev:  #5C36A3;
+      --sap-bg-dev:      #EDE7F6;
+      --sap-pink-beta:   #AA0808;
+      --sap-bg-beta:     #FFEBEE;
+      --sap-red-ne:      #BB0000;
+      --sap-bg-ne:       #FFEBEE;
+      --sap-teal-proto:  #0070F2;
+      --sap-bg-proto:    #E3F2FD;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "72", "SAP 72", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      color: var(--sap-text);
+      background: var(--sap-bg);
+      line-height: 1.6;
+    }
+
+    /* ── Page wrapper ────────────────────────────────────────────── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 0 48px;
+    }
+
+    /* ── SAP Header Bar ──────────────────────────────────────────── */
+    .sap-global-header {
+      background: var(--sap-navy);
+      color: #fff;
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .sap-global-header .logo-wordmark {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+    .sap-global-header .logo-wordmark span {
+      color: var(--sap-blue);
+    }
+    .sap-global-header .header-meta {
+      font-size: 12px;
+      color: #B0B8C0;
+      text-align: right;
+    }
+
+    /* ── Cover Section ───────────────────────────────────────────── */
+    .cover {
+      background: linear-gradient(135deg, var(--sap-navy) 0%, var(--sap-joule-purple) 55%, var(--sap-purple-mid) 100%);
+      color: #fff;
+      padding: 64px 48px 56px;
+      margin-bottom: 0;
+    }
+    .cover .cover-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sap-purple-light);
+      margin-bottom: 16px;
+    }
+    .cover h1 {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .cover h2 {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--sap-purple-light);
+      margin-bottom: 32px;
+    }
+    .cover-divider {
+      width: 80px;
+      height: 3px;
+      background: var(--sap-blue);
+      margin-bottom: 28px;
+    }
+    .cover-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .cover-meta span::before { content: "· "; }
+    .cover-meta span:first-child::before { content: ""; }
+    .cover-badge {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 12px;
+      color: var(--sap-purple-light);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Section container ───────────────────────────────────────── */
+    .section {
+      background: var(--sap-bg-white);
+      margin: 32px auto;
+      max-width: 1100px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      overflow: hidden;
+    }
+    .section-header {
+      background: var(--sap-navy);
+      color: #fff;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-number {
+      background: var(--sap-blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .section-body {
+      padding: 32px;
+    }
+
+    /* ── Table of Contents ───────────────────────────────────────── */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .toc-item {
+      border: 1px solid var(--sap-border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .toc-item:hover { box-shadow: 0 2px 8px rgba(0,112,242,0.15); border-color: var(--sap-blue); }
+    .toc-num {
+      background: var(--sap-joule-purple);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .toc-label { font-size: 13px; font-weight: 600; color: var(--sap-navy); padding-top: 4px; }
+
+    /* ── Disclaimer box ──────────────────────────────────────────── */
+    .disclaimer-box {
+      background: #FFF8E1;
+      border-left: 4px solid #F0AB00;
+      border-radius: 4px;
+      padding: 20px 24px;
+      font-size: 13px;
+      color: var(--sap-text);
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: var(--sap-navy); }
+
+    /* ── Assistant cards ─────────────────────────────────────────── */
+    .assistant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .assistant-card {
+      border: 1px solid var(--sap-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .assistant-card-header {
+      background: var(--sap-navy);
+      color: #fff;
+      padding: 14px 16px 10px;
+      text-align: center;
+    }
+    .assistant-card-num {
+      background: var(--sap-joule-purple);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 auto 10px;
+    }
+    .assistant-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .assistant-card-sub {
+      font-size: 11px;
+      color: var(--sap-purple-light);
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .assistant-card-body {
+      padding: 16px;
+      flex: 1;
+      font-size: 12.5px;
+      color: var(--sap-text);
+      line-height: 1.55;
+    }
+    .assistant-card-footer {
+      border-top: 1px solid var(--sap-border);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--sap-blue);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ── Domain summary cards ────────────────────────────────────── */
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .domain-card {
+      border: 1px solid var(--sap-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .domain-card-title {
+      background: var(--sap-joule-purple);
+      color: #fff;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.35;
+    }
+    .domain-card-body { padding: 20px 16px; text-align: center; }
+    .domain-count {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--sap-navy);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .domain-count-label {
+      font-size: 12px;
+      color: var(--sap-text-subtle);
+      margin-bottom: 14px;
+    }
+    .domain-sub-counts {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .domain-sub {
+      flex: 1;
+      border: 1px solid var(--sap-border);
+      border-radius: 6px;
+      padding: 8px 4px;
+      text-align: center;
+    }
+    .domain-sub-num {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sap-joule-purple);
+    }
+    .domain-sub-num.green { color: #188918; }
+    .domain-sub-label { font-size: 10px; color: var(--sap-text-subtle); margin-top: 2px; }
+    .domain-card-footer {
+      border-top: 1px solid var(--sap-border);
+      padding: 10px 16px;
+      font-size: 11px;
+      color: var(--sap-text-subtle);
+      text-align: center;
+    }
+
+    /* ── Two-column agent mapping ────────────────────────────────── */
+    .subsection-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--sap-navy);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--sap-blue);
+    }
+    .subsection-subtitle {
+      font-size: 13px;
+      color: var(--sap-text-subtle);
+      margin-bottom: 20px;
+      margin-top: -8px;
+    }
+    .agent-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 700px) { .agent-columns { grid-template-columns: 1fr; } }
+    .agent-col-header {
+      background: var(--sap-joule-purple);
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 6px 6px 0 0;
+      letter-spacing: 1px;
+    }
+    .agent-list {
+      border: 1px solid var(--sap-border);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+    }
+    .agent-row {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--sap-border);
+      gap: 10px;
+      font-size: 13px;
+    }
+    .agent-row:last-child { border-bottom: none; }
+    .agent-row:nth-child(even) { background: var(--sap-bg); }
+    .agent-row-num {
+      background: var(--sap-navy);
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Status Tables ───────────────────────────────────────────── */
+    .status-table-wrap {
+      overflow-x: auto;
+    }
+    table.status-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.status-table thead tr {
+      background: var(--sap-navy);
+      color: #fff;
+    }
+    table.status-table th {
+      padding: 11px 16px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    table.status-table td {
+      padding: 9px 16px;
+      border-bottom: 1px solid var(--sap-border);
+      vertical-align: middle;
+    }
+    table.status-table tr:nth-child(even) td { background: var(--sap-bg); }
+    table.status-table tr:hover td { background: #EEF4FD; }
+    .two-col-tables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 800px) { .two-col-tables { grid-template-columns: 1fr; } }
+
+    /* ── Status badges ───────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+    .badge-idea       { background: #F3F3F3; color: #6A6D70; border: 1px solid #D9DBDD; }
+    .badge-ga         { background: var(--sap-bg-ga);   color: var(--sap-green-ga);  border: 1px solid #A5D6A7; }
+    .badge-dev        { background: var(--sap-bg-dev);  color: var(--sap-indigo-dev); border: 1px solid #B39DDB; }
+    .badge-hold       { background: var(--sap-bg-hold); color: var(--sap-orange-hold); border: 1px solid #FFCC80; }
+    .badge-proto      { background: var(--sap-bg-proto); color: #0040B0;  border: 1px solid #90CAF9; }
+    .badge-beta       { background: var(--sap-bg-beta); color: var(--sap-pink-beta); border: 1px solid #EF9A9A; }
+    .badge-ne         { background: var(--sap-bg-ne);   color: var(--sap-red-ne);    border: 1px solid #EF9A9A; }
+    .badge-na         { background: #F3F3F3; color: #999; border: 1px solid #D9DBDD; font-style: italic; }
+
+    /* ── Legend ──────────────────────────────────────────────────── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--sap-bg);
+      border: 1px solid var(--sap-border);
+      border-radius: 6px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+
+    /* ── Revenue Recognition agent cards ────────────────────────── */
+    .rev-rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .rev-rec-card {
+      border: 1px solid var(--sap-border);
+      border-radius: 8px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .rev-rec-num {
+      background: var(--sap-navy);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 auto 12px;
+    }
+    .rev-rec-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--sap-navy);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .rev-rec-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--sap-blue);
+      margin: 8px auto 10px;
+    }
+    .rev-rec-desc {
+      font-size: 12px;
+      color: var(--sap-text-subtle);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    .doc-footer {
+      background: var(--sap-navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 20px 32px;
+      font-size: 12px;
+      margin-top: 48px;
+    }
+    .doc-footer a { color: var(--sap-blue); text-decoration: none; }
+
+    /* ── Utility ─────────────────────────────────────────────────── */
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .text-subtle { color: var(--sap-text-subtle); font-size: 13px; }
+    .joule-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--sap-joule-purple);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--sap-text-subtle);
+      margin-bottom: 8px;
+    }
+    .info-row strong { color: var(--sap-navy); }
+
+    /* ── Status group pills ──────────────────────────────────────── */
+    .status-pill {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* ── Enhanced section header colours ────────────────────────── */
+    .section-header.blue   { background: linear-gradient(90deg, #0040B0 0%, #0070F2 100%); }
+    .section-header.purple { background: linear-gradient(90deg, var(--sap-joule-purple) 0%, var(--sap-purple-mid) 100%); }
+    .section-header.teal   { background: linear-gradient(90deg, #006D6D 0%, #00A8A8 100%); }
+    .section-header.green  { background: linear-gradient(90deg, #1B6B1B 0%, #188918 100%); }
+    .section-header.orange { background: linear-gradient(90deg, #A63200 0%, #D14900 100%); }
+
+    /* ── Highlighted subsection title variants ───────────────────── */
+    .subsection-title.highlight-blue   { background:#E3F2FD; border-left:4px solid var(--sap-blue); padding:10px 16px; border-radius:4px; border-bottom:none; color:var(--sap-blue-dark); }
+    .subsection-title.highlight-purple { background:#EDE7F6; border-left:4px solid var(--sap-joule-purple); padding:10px 16px; border-radius:4px; border-bottom:none; color:var(--sap-joule-purple); }
+    .subsection-title.highlight-green  { background:#E8F5E9; border-left:4px solid #188918; padding:10px 16px; border-radius:4px; border-bottom:none; color:#1B6B1B; }
+    .subsection-title.highlight-orange { background:#FFF3E0; border-left:4px solid #D14900; padding:10px 16px; border-radius:4px; border-bottom:none; color:#A63200; }
+    .subsection-title.highlight-teal   { background:#E0F2F1; border-left:4px solid #006D6D; padding:10px 16px; border-radius:4px; border-bottom:none; color:#006D6D; }
+
+    /* ── Extra global enhancements ───────────────────────────────── */
+
+    /* Richer section box */
+    .section {
+      border-top: 3px solid transparent;
+      background-clip: padding-box;
+    }
+    #agenda     { border-top-color: #0070F2; }
+    #disclaimer { border-top-color: #D14900; }
+    #assistants { border-top-color: #6A2C8E; }
+    #agents     { border-top-color: #006D6D; }
+    #ownership  { border-top-color: #0040B0; }
+    #status     { border-top-color: #188918; }
+    #alignment  { border-top-color: #00695C; }
+
+    /* TOC items – richer colours */
+    .toc-item { border-left: 3px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; }
+    .toc-item:nth-child(1) { border-left-color: #D14900; }
+    .toc-item:nth-child(2) { border-left-color: #6A2C8E; }
+    .toc-item:nth-child(3) { border-left-color: #006D6D; }
+    .toc-item:nth-child(4) { border-left-color: #0040B0; }
+    .toc-item:nth-child(5) { border-left-color: #188918; }
+    .toc-item:nth-child(6) { border-left-color: #00695C; }
+
+    /* Cover enhancements */
+    .cover h1 { text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .cover-label { letter-spacing: 4px; }
+
+    /* Section header h2 – larger + glow */
+    .section-header h2 { font-size: 19px; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+
+    /* Coloured domain card titles */
+    .domain-card:nth-child(1) .domain-card-title { background: linear-gradient(90deg,#4A1580,#6A2C8E); }
+    .domain-card:nth-child(2) .domain-card-title { background: linear-gradient(90deg,#0040B0,#0070F2); }
+    .domain-card:nth-child(3) .domain-card-title { background: linear-gradient(90deg,#006D6D,#00A8A8); }
+    .domain-card:nth-child(4) .domain-card-title { background: linear-gradient(90deg,#1B6B1B,#188918); }
+    .domain-card:nth-child(5) .domain-card-title { background: linear-gradient(90deg,#A63200,#D14900); }
+    .domain-count { background: linear-gradient(135deg,var(--sap-navy),var(--sap-blue-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Agent col headers per domain */
+    .agent-col-header { letter-spacing: 0.5px; font-size: 13px; }
+
+    /* Rev-rec cards */
+    .rev-rec-card { transition: box-shadow 0.2s; }
+    .rev-rec-card:hover { box-shadow: 0 4px 16px rgba(0,112,242,0.18); }
+    .rev-rec-num { background: linear-gradient(135deg,#0040B0,#0070F2); }
+
+    /* Assistant card enhancements */
+    .assistant-card { transition: transform 0.15s, box-shadow 0.15s; }
+    .assistant-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(106,44,142,0.18); }
+    .assistant-card:nth-child(1) .assistant-card-header { background: linear-gradient(135deg,#006D6D,#00A8A8); }
+    .assistant-card:nth-child(2) .assistant-card-header { background: linear-gradient(135deg,#4A1580,#6A2C8E); }
+    .assistant-card:nth-child(3) .assistant-card-header { background: linear-gradient(135deg,#0040B0,#0070F2); }
+    .assistant-card:nth-child(4) .assistant-card-header { background: linear-gradient(135deg,#1B6B1B,#188918); }
+    .assistant-card:nth-child(5) .assistant-card-header { background: linear-gradient(135deg,#A63200,#D14900); }
+
+    /* Status table – coloured first column */
+    table.status-table tbody tr td:first-child { font-weight: 700; color: var(--sap-text-subtle); }
+
+    /* Legend enhancements */
+    .legend { background: linear-gradient(135deg,#F5F6F7,#EEF0F2); }
+
+    /* Joule tag pulse */
+    .joule-tag { box-shadow: 0 2px 8px rgba(106,44,142,0.25); }
+
+    /* Agent rows coloured on hover */
+    .agent-row:hover { background: #EEF4FD !important; color: var(--sap-blue-dark); font-weight: 600; }
+
+    /* Footer link hover */
+    .doc-footer a:hover { text-decoration: underline; }
+
+    /* Disclaimer box */
+    .disclaimer-box { border-left: 5px solid #F0AB00; background: linear-gradient(135deg,#FFF8E1,#FFFDE7); }
+
+    /* ── Editable alignment cells ───────────────────────────────── */
+    .editable-cell {
+      outline: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      min-height: 28px;
+      display: block;
+      transition: background 0.15s, box-shadow 0.15s;
+      cursor: text;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .editable-cell:hover {
+      background: #EEF4FD;
+      box-shadow: inset 0 0 0 1px #90CAF9;
+    }
+    .editable-cell:focus {
+      background: #fff;
+      box-shadow: inset 0 0 0 2px var(--sap-blue);
+    }
+    .editable-cell.empty::before {
+      content: attr(data-placeholder);
+      color: #BBBBBB;
+      font-style: italic;
+      pointer-events: none;
+    }
+    /* pencil icon on column header */
+    .edit-hint {
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-left: 4px;
+    }
+    /* save indicator */
+    #save-toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 300;
+      background: #188918; color: #fff; border-radius: 6px;
+      padding: 10px 20px; font-size: 13px; font-weight: 700;
+      opacity: 0; transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    #save-toast.show { opacity: 1; }
+
+    /* ── PM Filter bar ──────────────────────────────────────────── */
+    #puc-filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 16px; align-items: center;
+    }
+    .pm-filter-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1.5px solid var(--sap-border); background: #fff;
+      border-radius: 20px; padding: 5px 14px; font-size: 12.5px;
+      font-weight: 600; cursor: pointer; transition: all 0.15s;
+      color: var(--sap-text);
+    }
+    .pm-filter-btn:hover { border-color: var(--sap-blue); color: var(--sap-blue); background:#EEF4FD; }
+    .pm-filter-btn.active { background: var(--sap-blue); color: #fff; border-color: var(--sap-blue); }
+    .pm-filter-btn.active.all-btn { background: var(--sap-navy); border-color: var(--sap-navy); }
+    .pm-avatar-sm {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; flex-shrink: 0;
+    }
+    /* PM grouped view */
+    #puc-grouped-view { margin-top: 20px; }
+    .pm-group-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,64,176,0.12);
+      border: 1px solid #BBDEFB; margin-bottom: 20px;
+    }
+    .pm-group-header {
+      background: linear-gradient(90deg,#0040B0,#0070F2);
+      color: #fff; padding: 14px 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .pm-group-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+    .pm-group-name { font-size: 16px; font-weight: 700; }
+    .pm-group-meta { font-size: 12px; color: rgba(255,255,255,0.75); margin-top:2px; }
+    .pm-group-body { background: #fff; padding: 16px 20px; }
+    .dm-sub-group {
+      border: 1px solid #E3F2FD; border-radius: 8px;
+      margin-bottom: 12px; overflow: hidden;
+    }
+    .dm-sub-header {
+      background: #E3F2FD; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700; color: #0040B0;
+    }
+    .dm-sub-avatar {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: #188918; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+    }
+    .dm-agent-list { padding: 6px 0; }
+    .dm-agent-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 14px; border-bottom: 1px solid #F0F4FF;
+      font-size: 13px; color: var(--sap-text);
+    }
+    .dm-agent-item:last-child { border-bottom: none; }
+    .dm-agent-num {
+      background: #0070F2; color: #fff; border-radius: 50%;
+      width: 20px; height: 20px; font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .puc-row-hidden { display: none !important; }
+
+    /* ── Card inline editable fields ────────────────────────────── */
+    .card-editable {
+      outline: none;
+      border-radius: 4px;
+      padding: 2px 6px;
+      cursor: text;
+      transition: background 0.15s, box-shadow 0.15s;
+      display: inline-block;
+      min-width: 60px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .card-editable:hover  { background: rgba(255,255,255,0.2); }
+    .card-editable:focus  { background: rgba(255,255,255,0.35); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.7); }
+    /* DM & Agent fields (on light background) */
+    .card-editable.light:hover { background: #EEF4FD; box-shadow: inset 0 0 0 1px #90CAF9; }
+    .card-editable.light:focus { background: #fff; box-shadow: inset 0 0 0 2px var(--sap-blue); }
+    .card-editable.empty::before {
+      content: attr(data-placeholder);
+      color: #BBBBBB; font-style: italic; pointer-events: none;
+    }
+    /* pencil hint label */
+    .card-edit-hint {
+      font-size: 9px; opacity: 0.6; margin-left: 4px;
+      font-weight: 400; letter-spacing: 0;
+    }
+
+    /* ── Editable table cells (et) ──────────────────────────────── */
+    td.et { padding: 6px 10px !important; vertical-align: middle; }
+    td.et.pm { border-left: 3px solid #0070F2; background: #F8FBFF; }
+    td.et.dm { border-left: 3px solid #188918; background: #F8FFF8; }
+    td.et.ag { border-left: 3px solid #6A2C8E; background: #FDFAFF; }
+    td.et.rs { border-left: 3px solid #D14900; background: #FFFAF5; }
+    .et-field {
+      display: block; outline: none; border-radius: 4px;
+      padding: 4px 8px; min-height: 26px; cursor: text;
+      transition: background 0.15s, box-shadow 0.15s;
+      white-space: pre-wrap; word-break: break-word;
+      font-size: 13px;
+    }
+    .et-field:hover  { background: #EEF4FD; }
+    .et-field:focus  { background: #fff; box-shadow: inset 0 0 0 2px var(--sap-blue); }
+    .et-field.empty::before {
+      content: attr(data-placeholder);
+      color: #BBBBBB; font-style: italic; pointer-events: none;
+    }
+    tr.pm-group-row td { cursor: default !important; }
+
+    /* ── PM group boxing ─────────────────────────────────────────── */
+    .pm-box {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .pm-box-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .pm-box-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+    }
+    .pm-box-meta { font-size: 12px; font-weight: 400; opacity: 0.8; margin-top: 2px; }
+    .pm-box-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .pm-box-table th {
+      padding: 9px 14px;
+      text-align: left;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .pm-box-table th.col-pm  { background: #0040B0; width: 20%; }
+    .pm-box-table th.col-dm  { background: #1B6B1B; width: 20%; }
+    .pm-box-table th.col-ag  { background: #1D2D3E; width: 42%; }
+    .pm-box-table th.col-rs  { background: #A63200; width: 18%; }
+    .pm-box-table td {
+      padding: 0;
+      border-bottom: 1px solid #EEEEEE;
+      vertical-align: middle;
+    }
+    .pm-box-table td.col-pm { background: #F0F7FF; border-left: 3px solid #0070F2; }
+    .pm-box-table td.col-dm { background: #F2FFF2; border-left: 3px solid #188918; }
+    .pm-box-table td.col-ag { background: #FDF9FF; border-left: 3px solid #6A2C8E; }
+    .pm-box-table td.col-rs { background: #FFF8F5; border-left: 3px solid #D14900; }
+    .pm-box-table tr:last-child td { border-bottom: none; }
+    .pm-box-table tr:hover td { filter: brightness(0.97); }
+
+    /* Print */
+    @media print {
+      .sap-global-header { position: static; }
+      .section { box-shadow: none; border: 1px solid var(--sap-border); }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ GLOBAL HEADER ═══════════════════════ -->
+<header class="sap-global-header">
+  <div class="logo-wordmark">
+    <span style="background:var(--sap-blue);color:#fff;border-radius:4px;padding:2px 8px;font-size:18px;font-weight:900;letter-spacing:1px;margin-right:8px;">SAP</span>
+    <span style="color:#fff;">Management Accounting</span>
+    <span style="margin-left:10px;font-size:14px;background:rgba(106,44,142,0.5);border:1px solid rgba(201,160,220,0.4);border-radius:20px;padding:2px 10px;color:var(--sap-purple-light);font-weight:600;letter-spacing:1px;">⚡ Joule AI</span>
+  </div>
+  <div class="header-meta">
+    🤖 Management Accounting — Agents &amp; Assistants<br>
+    📅 June 2026 &nbsp;|&nbsp; 🔒 SAP SE — Confidential
+  </div>
+</header>
+
+<!-- ═══════════════════════ COVER ════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">🏢 SAP &nbsp;·&nbsp; Management Accounting &nbsp;·&nbsp; June 2026</div>
+  <h1>🤖 Agents &amp; Assistants</h1>
+  <h2>⚡ AI-Powered Management Accounting</h2>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    <span>☁️ PUC &amp; PCE Alignment</span>
+    <span>🧩 Business Domain Assistants</span>
+    <span>🔍 Agent-Level Detail</span>
+    <span>👥 PM &amp; Dev Ownership</span>
+  </div>
+  <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;">
+    <div class="cover-badge">⚡&nbsp; SAP Joule Powered</div>
+    <div class="cover-badge" style="background:rgba(0,112,242,0.2);border-color:rgba(0,112,242,0.4);color:#90CAF9;">🌐&nbsp; S/4HANA Cloud</div>
+    <div class="cover-badge" style="background:rgba(24,137,24,0.2);border-color:rgba(24,137,24,0.4);color:#A5D6A7;">✅&nbsp; GA &amp; In Development</div>
+    <div class="cover-badge" style="background:rgba(209,73,0,0.2);border-color:rgba(209,73,0,0.4);color:#FFCC80;">🔒&nbsp; SAP Confidential</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ════════════ 01 — AGENDA / SESSION OVERVIEW ════════════════ -->
+  <div class="section" id="agenda">
+    <div class="section-header blue">
+      <div class="section-number">📋</div>
+      <h2>📌 Agenda — Session Overview</h2>
+    </div>
+    <div class="section-body">
+      <div class="toc-grid">
+        <a class="toc-item" href="#disclaimer">
+          <div class="toc-num">01</div>
+          <div class="toc-label">⚠️ Disclaimer</div>
+        </a>
+        <a class="toc-item" href="#assistants">
+          <div class="toc-num">02</div>
+          <div class="toc-label">🤖 Overview of the Assistants</div>
+        </a>
+        <a class="toc-item" href="#agents">
+          <div class="toc-num">03</div>
+          <div class="toc-label">🗂️ Overview of Agents</div>
+        </a>
+        <a class="toc-item" href="#ownership">
+          <div class="toc-num">04</div>
+          <div class="toc-label">🧭 Who Leads which Agents</div>
+        </a>
+        <a class="toc-item" href="#status">
+          <div class="toc-num">05</div>
+          <div class="toc-label">📊 Where Are We Now</div>
+        </a>
+        <a class="toc-item" href="#alignment">
+          <div class="toc-num">06</div>
+          <div class="toc-label">👥 PM &amp; Dev Team Alignment per Agent</div>
+        </a>
+        <a class="toc-item" href="#puc-pce-alignment">
+          <div class="toc-num">07</div>
+          <div class="toc-label">🤝 PUC &amp; PCE Alignment</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ 01 — DISCLAIMER ══════════════════════════════ -->
+  <div class="section" id="disclaimer">
+    <div class="section-header orange">
+      <div class="section-number">⚠️</div>
+      <h2>⚠️ Disclaimer — SAP Confidential</h2>
+    </div>
+    <div class="section-body">
+      <div class="disclaimer-box">
+        <strong style="color:var(--sap-navy);font-size:14px;">⚠️ Important Notice — 🔒 SAP Confidential</strong><br><br>
+        This document is prepared for internal alignment purposes between the
+        <strong style="color:var(--sap-blue);">☁️ PUC (Public Cloud)</strong> and
+        <strong style="color:var(--sap-joule-purple);">🔒 PCE (Private Cloud)</strong> product teams within
+        <strong style="color:var(--sap-navy);">SAP Management Accounting</strong>. The content, agent
+        names, feature descriptions, and delivery statuses represent the current planning view as of
+        <strong style="color:var(--sap-orange-hold);">📅 June 2026</strong> and are subject to change without notice.<br><br>
+        This material <strong style="color:#BB0000;">must not be shared externally</strong> without prior approval from SAP SE.
+        All product plans, roadmap items, and feature descriptions are forward-looking statements and
+        do not constitute a commitment to deliver any specific product capability.<br><br>
+        <span style="color:var(--sap-text-subtle);">© 2026 SAP SE or an SAP affiliate company. All rights reserved.
+        <strong style="color:var(--sap-navy);">SAP</strong>, <strong style="color:var(--sap-joule-purple);">⚡ SAP Joule</strong>, and
+        other SAP products and services mentioned herein are trademarks or registered trademarks of
+        SAP SE in Germany and other countries.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ 02 — ASSISTANTS OVERVIEW ══════════════════════ -->
+  <div class="section" id="assistants">
+    <div class="section-header purple">
+      <div class="section-number">🤖</div>
+      <h2>🤖 Overview of the Assistants — SAP Joule ⚡</h2>
+    </div>
+    <div class="section-body">
+
+      <div class="joule-tag">⚡ Powered by SAP Joule AI</div>
+      <p class="text-subtle" style="margin-bottom:24px;">
+        <strong style="color:var(--sap-joule-purple);">🤖 Management Accounting Assistants</strong> are intelligent, domain-specific AI capabilities embedded in
+        <strong style="color:var(--sap-blue);">SAP S/4HANA Cloud</strong>, powered by <strong style="color:var(--sap-joule-purple);">⚡ SAP Joule</strong>. Each assistant bundles related AI agents to guide
+        users through complex accounting workflows.
+      </p>
+
+      <div class="assistant-grid">
+
+        <div class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-card-num">01</div>
+            <div class="assistant-card-title">Inventory Valuation</div>
+            <div class="assistant-card-sub">Assistant</div>
+          </div>
+          <div class="assistant-card-body">
+            Automates inventory valuation entries and supports period-end stock adjustments
+            with AI-guided insights.
+          </div>
+          <div class="assistant-card-footer">&#8594; See Agent Detail</div>
+        </div>
+
+        <div class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-card-num">02</div>
+            <div class="assistant-card-title">Overhead Accounting</div>
+            <div class="assistant-card-sub">Assistant</div>
+          </div>
+          <div class="assistant-card-body">
+            Streamlines overhead cost allocation, absorption postings, and cycle execution
+            with intelligent recommendations.
+          </div>
+          <div class="assistant-card-footer">&#8594; See Agent Detail</div>
+        </div>
+
+        <div class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-card-num">03</div>
+            <div class="assistant-card-title">Product Cost Accounting</div>
+            <div class="assistant-card-sub">Assistant</div>
+          </div>
+          <div class="assistant-card-body">
+            Guides product costing runs, variance analysis, and cost object settlements
+            for manufacturing operations.
+          </div>
+          <div class="assistant-card-footer">&#8594; See Agent Detail</div>
+        </div>
+
+        <div class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-card-num">04</div>
+            <div class="assistant-card-title">Revenue Recognition</div>
+            <div class="assistant-card-sub">Assistant</div>
+          </div>
+          <div class="assistant-card-body">
+            Ensures compliance with revenue recognition standards by assisting with
+            contract management and posting logic.
+          </div>
+          <div class="assistant-card-footer">&#8594; See Agent Detail</div>
+        </div>
+
+        <div class="assistant-card">
+          <div class="assistant-card-header">
+            <div class="assistant-card-num">05</div>
+            <div class="assistant-card-title">Sales Accounting</div>
+            <div class="assistant-card-sub">Assistant</div>
+          </div>
+          <div class="assistant-card-body">
+            Supports sales-related accounting entries, billing document processing,
+            and reconciliation workflows.
+          </div>
+          <div class="assistant-card-footer">&#8594; See Agent Detail</div>
+        </div>
+
+      </div>
+
+      <!-- Shared Assistants sub-section -->
+      <div class="mt-32">
+        <div class="subsection-title highlight-purple">🤝 Shared Assistants for Public Cloud and Private Cloud</div>
+        <p class="text-subtle" style="margin-bottom:24px;">
+          One assistant definition serves both Public Cloud and Private Cloud.
+          Alignment is done centrally for a holistic picture.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+          <div>
+            <div class="agent-col-header" style="border-radius:6px 6px 0 0;">🧩&nbsp; Proposed Assistants</div>
+            <div class="agent-list">
+              <div class="agent-row">&#9658; Product Cost Accounting Assistant</div>
+              <div class="agent-row">&#9658; Inventory Valuation Assistant</div>
+              <div class="agent-row">&#9658; Overhead Accounting Assistant</div>
+              <div class="agent-row">&#9658; Sales Accounting Assistant</div>
+              <div class="agent-row">&#9658; Revenue Recognition Assistant</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="agent-col-header" style="border-radius:6px 6px 0 0;">🎯&nbsp; Central Alignment Approach</div>
+            <div class="agent-list">
+              <div class="agent-row">&#9658; Scope defined holistically across areas</div>
+              <div class="agent-row">&#9658; Agents from both clouds assigned to shared assistants</div>
+              <div class="agent-row">&#9658; Naming and definition agreed jointly</div>
+              <div class="agent-row">&#9658; Joint alignment with Product Marketing</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:16px;padding:14px 18px;background:var(--sap-bg);border:1px solid var(--sap-border);border-radius:6px;font-size:13px;color:var(--sap-text-subtle);display:flex;flex-wrap:wrap;align-items:center;gap:16px;">
+          <a href="https://sap.sharepoint.com/:x:/s/124797/IQA-TOn762b1SaXzm7JTG0mgATX4xdVrDWOcjN4gwZ2uTgo?CID=6BE354CA-1F58-41C9-A7F4-3B48C233DBCF&wdLOR=cB15F0E80-92D4-4D56-9CD5-138CAEF624D4" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--sap-blue);color:var(--sap-blue);font-weight:700;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:12.5px;transition:background 0.2s;">
+            📎 Consolidated List (SharePoint)
+          </a>
+          <a href="https://sap.sharepoint.com/:x:/s/124797/IQA-TOn762b1SaXzm7JTG0mgATX4xdVrDWOcjN4gwZ2uTgo?CID=6BE354CA-1F58-41C9-A7F4-3B48C233DBCF&wdLOR=cB15F0E80-92D4-4D56-9CD5-138CAEF624D4" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--sap-joule-purple);color:var(--sap-joule-purple);font-weight:700;text-decoration:none;padding:6px 14px;border-radius:6px;font-size:12.5px;transition:background 0.2s;">
+            🚀 Aha! Initiative (AIOAIF-S-20)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════ 03 — AGENTS OVERVIEW (DOMAIN SUMMARY) ═════════ -->
+  <div class="section" id="agents">
+    <div class="section-header teal">
+      <div class="section-number">🗂️</div>
+      <h2>🗂️ Overview of Agents — Business Domain Assistants</h2>
+    </div>
+    <div class="section-body">
+
+      <p class="text-subtle" style="margin-bottom:24px;">
+        Each Assistant groups related <strong style="color:var(--sap-blue);">🤖 AI Agents</strong>. Agents are owned jointly by
+        <strong style="color:var(--sap-blue);">☁️ PUC</strong> (Public Cloud) and <strong style="color:var(--sap-joule-purple);">🔒 PCE</strong> (Private Cloud) teams.
+      </p>
+
+      <div class="domain-grid">
+
+        <div class="domain-card">
+          <div class="domain-card-title">Overhead Accounting<br>Assistant</div>
+          <div class="domain-card-body">
+            <div class="domain-count">21</div>
+            <div class="domain-count-label">Agents</div>
+            <div class="domain-sub-counts">
+              <div class="domain-sub">
+                <div class="domain-sub-num">9</div>
+                <div class="domain-sub-label">PUC Agents</div>
+              </div>
+              <div class="domain-sub">
+                <div class="domain-sub-num green">12</div>
+                <div class="domain-sub-label">PCE Agents</div>
+              </div>
+            </div>
+          </div>
+          <div class="domain-card-footer">Detail: Slides 3–4</div>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-card-title">Product Cost Accounting<br>Assistant</div>
+          <div class="domain-card-body">
+            <div class="domain-count">10</div>
+            <div class="domain-count-label">Agents</div>
+            <div class="domain-sub-counts">
+              <div class="domain-sub">
+                <div class="domain-sub-num">7</div>
+                <div class="domain-sub-label">PUC Agents</div>
+              </div>
+              <div class="domain-sub">
+                <div class="domain-sub-num green">3</div>
+                <div class="domain-sub-label">PCE Agents</div>
+              </div>
+            </div>
+          </div>
+          <div class="domain-card-footer">Detail: Slide 5</div>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-card-title">Inventory Valuation<br>Assistant</div>
+          <div class="domain-card-body">
+            <div class="domain-count">6</div>
+            <div class="domain-count-label">Agents</div>
+            <div class="domain-sub-counts">
+              <div class="domain-sub">
+                <div class="domain-sub-num">5</div>
+                <div class="domain-sub-label">PUC Agents</div>
+              </div>
+              <div class="domain-sub">
+                <div class="domain-sub-num green">1</div>
+                <div class="domain-sub-label">PCE Agents</div>
+              </div>
+            </div>
+          </div>
+          <div class="domain-card-footer">Detail: Slide 6</div>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-card-title">Revenue Recognition<br>Assistant</div>
+          <div class="domain-card-body">
+            <div class="domain-count">5</div>
+            <div class="domain-count-label">Agents</div>
+            <div class="domain-sub-counts">
+              <div class="domain-sub" style="flex:unset;padding:8px 16px;">
+                <div class="domain-sub-num">5</div>
+                <div class="domain-sub-label">PUC / PCE Agents</div>
+              </div>
+            </div>
+          </div>
+          <div class="domain-card-footer">Detail: Slide 7</div>
+        </div>
+
+        <div class="domain-card">
+          <div class="domain-card-title">Sales Accounting<br>Assistant</div>
+          <div class="domain-card-body">
+            <div class="domain-count">5</div>
+            <div class="domain-count-label">Agents</div>
+            <div class="domain-sub-counts">
+              <div class="domain-sub">
+                <div class="domain-sub-num">3</div>
+                <div class="domain-sub-label">PUC Agents</div>
+              </div>
+              <div class="domain-sub">
+                <div class="domain-sub-num green">2</div>
+                <div class="domain-sub-label">PCE Agents</div>
+              </div>
+            </div>
+          </div>
+          <div class="domain-card-footer">Detail: Slide 8</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ 04 — AGENT DETAIL MAPPINGS ════════════════════ -->
+  <div class="section" id="ownership">
+    <div class="section-header blue">
+      <div class="section-number">🧭</div>
+      <h2>🧭 Who Leads Which Agents — AI Use Case Mapping</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- 4a Overhead Accounting -->
+      <div class="subsection-title highlight-purple">🔄 Overhead Accounting Assistant</div>
+      <div class="agent-columns">
+        <div>
+          <div class="agent-col-header">PUC — Public Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> CO Reposting Agent</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Statistical Key Figures Agent</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> Explain Me – Agentic Concept</div>
+            <div class="agent-row"><span class="agent-row-num">4</span> Overhead Master Data Mass Change Agent</div>
+            <div class="agent-row"><span class="agent-row-num">5</span> AI Agent for Organizational Changes</div>
+            <div class="agent-row"><span class="agent-row-num">6</span> Allocation Results Agent</div>
+            <div class="agent-row"><span class="agent-row-num">7</span> AI-Assisted Analytical Business Insights – Cost Centers Booklet</div>
+            <div class="agent-row"><span class="agent-row-num">8</span> AI Generated Rules for Organizational Changes</div>
+            <div class="agent-row"><span class="agent-row-num">9</span> Financial Analysis Agent</div>
+          </div>
+        </div>
+        <div>
+          <div class="agent-col-header">PCE — Private Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> (Settlement) Rule Agent</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Asset Capitalization Agent for Measurement Object</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> Master Data – Internal Order Agent – CPIT</div>
+            <div class="agent-row"><span class="agent-row-num">4</span> Allocation Strategy Recommendation Agent</div>
+            <div class="agent-row"><span class="agent-row-num">5</span> Distribution &amp; Assessment Agent</div>
+            <div class="agent-row"><span class="agent-row-num">6</span> Cost Center Variance Analysis Agent</div>
+            <div class="agent-row"><span class="agent-row-num">7</span> Error Resolution – Cost Center</div>
+            <div class="agent-row"><span class="agent-row-num">8</span> Smart Overhead Activities Agent</div>
+            <div class="agent-row"><span class="agent-row-num">9</span> Anomaly Detection and Pattern Analysis of Journal Entries</div>
+            <div class="agent-row"><span class="agent-row-num">10</span> Joule Cost Center Budget (Extension to Transfer Budget)</div>
+            <div class="agent-row"><span class="agent-row-num">11</span> AI-Assisted Analytical Business Insights – Profit Center Review Booklet</div>
+            <div class="agent-row"><span class="agent-row-num">12</span> Splitting Rule Optimiser Agent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4b Production Cost Accounting -->
+      <div class="subsection-title highlight-blue mt-32">🏭 Production Cost Accounting Assistant</div>
+      <div class="agent-columns">
+        <div>
+          <div class="agent-col-header">PUC — Public Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> AI-Assisted Costing Variant Explanation</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Automatic Material Costing Agent</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> Material Cost Simulation Agent</div>
+            <div class="agent-row"><span class="agent-row-num">4</span> Production Plan Cost Simulation Agent</div>
+            <div class="agent-row"><span class="agent-row-num">5</span> Production Cost Analysis Agent</div>
+            <div class="agent-row"><span class="agent-row-num">6</span> Production Cost Accounting Closing Agent</div>
+            <div class="agent-row"><span class="agent-row-num">7</span> Production Cost Accounting Error Resolution Agent</div>
+          </div>
+        </div>
+        <div>
+          <div class="agent-col-header">PCE — Private Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> AI-Assisted Costing Variant Explanation – PCE</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Costing Analysis Agent</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> Production / Process Order Variance Analysis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4c Inventory Valuation -->
+      <div class="subsection-title highlight-teal mt-32">📦 Inventory Valuation Assistant</div>
+      <div class="agent-columns">
+        <div>
+          <div class="agent-col-header">PUC — Public Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> Inventory Valuation Orchestration Agent</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Balance Sheet Valuation Consistency and Execution Agent</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> Inventory Valuation Analysis Agent</div>
+            <div class="agent-row"><span class="agent-row-num">4</span> Price Exception Resolution Agent</div>
+            <div class="agent-row"><span class="agent-row-num">5</span> Writedown Correction Agent</div>
+          </div>
+        </div>
+        <div>
+          <div class="agent-col-header">PCE — Private Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> Material Price Variance Analysis Agent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4d Revenue Recognition -->
+      <div class="subsection-title highlight-green mt-32">💰 Revenue Recognition Assistant — PUC / PCE</div>
+      <p class="text-subtle" style="margin-bottom:20px;">
+        Five agents spanning the full revenue recognition lifecycle per <strong style="color:var(--sap-blue);">IFRS 15</strong> / <strong style="color:var(--sap-joule-purple);">ASC 606</strong>.
+      </p>
+      <div class="rev-rec-grid">
+        <div class="rev-rec-card">
+          <div class="rev-rec-num">01</div>
+          <div class="rev-rec-title">Contract Analysis Agent</div>
+          <div class="rev-rec-divider"></div>
+          <div class="rev-rec-desc">Identifies and validates revenue contracts per IFRS 15 / ASC 606.</div>
+        </div>
+        <div class="rev-rec-card">
+          <div class="rev-rec-num">02</div>
+          <div class="rev-rec-title">Performance Obligation Agent</div>
+          <div class="rev-rec-divider"></div>
+          <div class="rev-rec-desc">Detects and allocates transaction prices to performance obligations.</div>
+        </div>
+        <div class="rev-rec-card">
+          <div class="rev-rec-num">03</div>
+          <div class="rev-rec-title">Revenue Schedule Agent</div>
+          <div class="rev-rec-divider"></div>
+          <div class="rev-rec-desc">Automates recognition schedules and deferred revenue tracking.</div>
+        </div>
+        <div class="rev-rec-card">
+          <div class="rev-rec-num">04</div>
+          <div class="rev-rec-title">Posting &amp; Accrual Agent</div>
+          <div class="rev-rec-divider"></div>
+          <div class="rev-rec-desc">Executes journal entries, accruals, and period-end postings.</div>
+        </div>
+        <div class="rev-rec-card">
+          <div class="rev-rec-num">05</div>
+          <div class="rev-rec-title">Compliance Validation Agent</div>
+          <div class="rev-rec-divider"></div>
+          <div class="rev-rec-desc">Monitors exceptions, flags deviations, and triggers audit trails.</div>
+        </div>
+      </div>
+
+      <!-- 4e Sales Accounting -->
+      <div class="subsection-title highlight-orange mt-32">🛒 Sales Accounting Assistant</div>
+      <div class="agent-columns">
+        <div>
+          <div class="agent-col-header">PUC — Public Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> Sales Accounting Agent</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> Error Resolution Agent</div>
+            <div class="agent-row"><span class="agent-row-num">3</span> AI-Assisted Analytical Business Insights (5 Booklets)</div>
+          </div>
+        </div>
+        <div>
+          <div class="agent-col-header">PCE — Private Cloud</div>
+          <div class="agent-list">
+            <div class="agent-row"><span class="agent-row-num">1</span> Budget Information for Controller</div>
+            <div class="agent-row"><span class="agent-row-num">2</span> AI-Assisted Predictive Accounting Error Explanation</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════ 05 — AGENT STATUS ═════════════════════════════ -->
+  <div class="section" id="status">
+    <div class="section-header green">
+      <div class="section-number">📊</div>
+      <h2>📊 Where Are We Now — Agent Delivery Status</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Legend -->
+      <div class="legend">
+        <div class="legend-item"><span class="badge badge-idea">Idea</span> Concept stage, not yet committed</div>
+        <div class="legend-item"><span class="badge badge-ga">GA</span> Generally Available</div>
+        <div class="legend-item"><span class="badge badge-dev">In Development</span> Active build in progress</div>
+        <div class="legend-item"><span class="badge badge-hold">On Hold</span> Paused</div>
+        <div class="legend-item"><span class="badge badge-proto">Prototyping</span> Early technical validation</div>
+        <div class="legend-item"><span class="badge badge-beta">Beta</span> Limited availability</div>
+        <div class="legend-item"><span class="badge badge-ne">Not Existing</span> Out of scope</div>
+        <div class="legend-item"><span class="badge badge-na">N/A</span> Not applicable</div>
+      </div>
+
+      <!-- ══════════ PUC STATUS ══════════ -->
+      <div class="subsection-title highlight-blue mt-32">☁️ Agent Status — PUC (Public Cloud)</div>
+
+      <!-- PUC summary strip -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;gap:8px;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">✅</span>
+         <div><div style="font-size:20px;font-weight:700;color:#188918;line-height:1;">4</div><div style="font-size:11px;color:#1B6B1B;font-weight:600;">GA</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#E3F2FD;border:1px solid #90CAF9;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">⚙️</span>
+         <div><div style="font-size:20px;font-weight:700;color:#0070F2;line-height:1;">4</div><div style="font-size:11px;color:#0040B0;font-weight:600;">In Development</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#EDE7F6;border:1px solid #B39DDB;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">🔬</span>
+          <div><div style="font-size:20px;font-weight:700;color:#5C36A3;line-height:1;">1</div><div style="font-size:11px;color:#5C36A3;font-weight:600;">Prototyping</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#FFF3E0;border:1px solid #FFCC80;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">⏸️</span>
+         <div><div style="font-size:20px;font-weight:700;color:#D14900;line-height:1;">1</div><div style="font-size:11px;color:#A63200;font-weight:600;">On Hold</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#F5F6F7;border:1px solid #D9DBDD;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">💡</span>
+          <div><div style="font-size:20px;font-weight:700;color:#6A6D70;line-height:1;">21</div><div style="font-size:11px;color:#6A6D70;font-weight:600;">Idea</div></div>
+        </div>
+      </div>
+
+      <!-- PUC cards grid: small groups side by side, Idea full-width -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- GA -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(24,137,24,0.12);border:1px solid #A5D6A7;">
+          <div style="background:linear-gradient(90deg,#188918,#2ECC40);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">✅ Generally Available</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">4 agents</span>
+          </div>
+          <div style="background:#F1FBF1;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #C8E6C9;font-size:13px;color:#1B6B1B;"><span style="background:#188918;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>AI-Assisted Allocation Run Results</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #C8E6C9;font-size:13px;color:#1B6B1B;"><span style="background:#188918;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</span>AI-Assisted Analytical Business Insights – Cost Centers Booklet</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #C8E6C9;font-size:13px;color:#1B6B1B;"><span style="background:#188918;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</span>AI-Assisted Error Resolution for Cost Accounting</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#1B6B1B;"><span style="background:#188918;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</span>AI-Assisted Analytical Business Insights (5 Booklets)</div>
+          </div>
+        </div>
+
+        <!-- In Development -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,112,242,0.12);border:1px solid #90CAF9;">
+          <div style="background:linear-gradient(90deg,#0040B0,#0070F2);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">⚙️ In Development</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">4 agents</span>
+          </div>
+          <div style="background:#F0F7FF;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>Production Cost Analysis Agent</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</span>Production Cost Accounting Closing Agent</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</span>Production Cost Accounting Error Resolution Agent</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</span>Project WIP Agent</div>
+          </div>
+        </div>
+
+        <!-- Prototyping -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(92,54,163,0.12);border:1px solid #B39DDB;">
+          <div style="background:linear-gradient(90deg,#3A1F7A,#5C36A3);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">🔬 Prototyping</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">1 agent</span>
+          </div>
+          <div style="background:#F5F0FF;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#3A1F7A;"><span style="background:#5C36A3;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>Margin Analysis Agent</div>
+          </div>
+        </div>
+
+        <!-- On Hold -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(209,73,0,0.12);border:1px solid #FFCC80;">
+          <div style="background:linear-gradient(90deg,#A63200,#D14900);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">⏸️ On Hold</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">1 agent</span>
+          </div>
+          <div style="background:#FFFAF0;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#A63200;"><span style="background:#D14900;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>AI-Assisted Costing Variant Explanation</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PUC: Idea — full width -->
+      <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(106,109,112,0.10);border:1px solid #D9DBDD;margin-top:16px;">
+        <div style="background:linear-gradient(90deg,#4A4D50,#6A6D70);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:14px;font-weight:700;">💡 Idea — Concept Stage</span>
+          <span style="background:rgba(255,255,255,0.20);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">21 agents</span>
+        </div>
+        <div style="background:#FAFAFA;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">01</span>CO Reposting Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">02</span>Statistical Key Figures Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">03</span>Explain Me – Agentic Concept</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">04</span>(Settlement) Rule Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">05</span>Overhead Master Data Mass Change Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">06</span>AI Agent for Organizational Changes</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">07</span>Allocation Results Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">08</span>Automatic Material Costing Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">09</span>Material Cost Simulation Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">10</span>Material Price Spike Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">11</span>Balance Sheet Valuation Consistency &amp; Execution Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">12</span>Actual Costing Analysis Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">13</span>Actual Costing Error Resolution Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">14</span>Cost Component Breakdown Correction Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">15</span>Production Plan Cost Simulation Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">16</span>Revenue Contracts Combine Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">17</span>Event-Based Revenue Recognition – Reconciliation Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">18</span>Concession Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">19</span>Real-Time Issue / Closing Agent (EBRR)</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">20</span>Budget Management Assistant</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">21</span>Predictive Accounting Error Resolution Agent</div>
+        </div>
+      </div>
+
+      <!-- ══════════ DIVIDER ══════════ -->
+      <div style="border-top:2px dashed var(--sap-border);margin:36px 0;"></div>
+
+      <!-- ══════════ PCE STATUS ══════════ -->
+      <div class="subsection-title highlight-purple">🔒 Agent Status — PCE (Private Cloud)</div>
+
+      <!-- PCE summary strip -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;margin-bottom:24px;">
+        <div style="display:flex;align-items:center;gap:8px;background:#E3F2FD;border:1px solid #90CAF9;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">⚙️</span>
+         <div><div style="font-size:20px;font-weight:700;color:#0070F2;line-height:1;">4</div><div style="font-size:11px;color:#0040B0;font-weight:600;">In Development</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#EDE7F6;border:1px solid #B39DDB;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">🔬</span>
+          <div><div style="font-size:20px;font-weight:700;color:#5C36A3;line-height:1;">3</div><div style="font-size:11px;color:#5C36A3;font-weight:600;">Prototyping</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#FFEBEE;border:1px solid #EF9A9A;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">🧪</span>
+          <div><div style="font-size:20px;font-weight:700;color:#AA0808;line-height:1;">1</div><div style="font-size:11px;color:#AA0808;font-weight:600;">Beta</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#FFF3E0;border:1px solid #FFCC80;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">⏸️</span>
+         <div><div style="font-size:20px;font-weight:700;color:#D14900;line-height:1;">1</div><div style="font-size:11px;color:#A63200;font-weight:600;">On Hold</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#FFEBEE;border:1px solid #EF9A9A;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">❌</span>
+          <div><div style="font-size:20px;font-weight:700;color:#BB0000;line-height:1;">1</div><div style="font-size:11px;color:#BB0000;font-weight:600;">Not Existing</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:#F5F6F7;border:1px solid #D9DBDD;border-radius:6px;padding:8px 16px;">
+          <span style="font-size:18px;">💡</span>
+          <div><div style="font-size:20px;font-weight:700;color:#6A6D70;line-height:1;">16</div><div style="font-size:11px;color:#6A6D70;font-weight:600;">Idea</div></div>
+        </div>
+      </div>
+
+      <!-- PCE cards grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- In Development -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,112,242,0.12);border:1px solid #90CAF9;">
+          <div style="background:linear-gradient(90deg,#0040B0,#0070F2);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">⚙️ In Development</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">4 agents</span>
+          </div>
+          <div style="background:#F0F7FF;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>Joule Cost Center Budget (Extension to Transfer Budget)</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</span>AI-Assisted Analytical Business Insights – Profit Center Review Booklet</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #BBDEFB;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</span>AI-Assisted Costing Variant Explanation</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#0040B0;"><span style="background:#0070F2;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</span>AI-Assisted Predictive Accounting Error Explanation</div>
+          </div>
+        </div>
+
+        <!-- Prototyping -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(92,54,163,0.12);border:1px solid #B39DDB;">
+          <div style="background:linear-gradient(90deg,#3A1F7A,#5C36A3);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">🔬 Prototyping</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">3 agents</span>
+          </div>
+          <div style="background:#F5F0FF;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #D1C4E9;font-size:13px;color:#3A1F7A;"><span style="background:#5C36A3;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>SettleXpert Agent</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #D1C4E9;font-size:13px;color:#3A1F7A;"><span style="background:#5C36A3;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">2</span>Anomaly Detection and Pattern Analysis of Journal Entries</div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#3A1F7A;"><span style="background:#5C36A3;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">3</span>Revenue Accounting – Closing Support Agent</div>
+          </div>
+        </div>
+
+        <!-- Beta -->
+        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(170,8,8,0.10);border:1px solid #EF9A9A;">
+          <div style="background:linear-gradient(90deg,#7B0000,#AA0808);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:14px;font-weight:700;">🧪 Beta — Limited Availability</span>
+            <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">1 agent</span>
+          </div>
+          <div style="background:#FFF5F5;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#7B0000;"><span style="background:#AA0808;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>[BETA] Revenue Contracts Combine Agent</div>
+          </div>
+        </div>
+
+        <!-- On Hold + Not Existing stacked -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(209,73,0,0.12);border:1px solid #FFCC80;">
+            <div style="background:linear-gradient(90deg,#A63200,#D14900);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:14px;font-weight:700;">⏸️ On Hold</span>
+              <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">1 agent</span>
+            </div>
+            <div style="background:#FFFAF0;">
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#A63200;"><span style="background:#D14900;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>AI Generated Rules for Organizational Changes</div>
+            </div>
+          </div>
+          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(187,0,0,0.10);border:1px solid #EF9A9A;">
+            <div style="background:linear-gradient(90deg,#7B0000,#BB0000);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:14px;font-weight:700;">❌ Not Existing</span>
+              <span style="background:rgba(255,255,255,0.25);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">1 agent</span>
+            </div>
+            <div style="background:#FFF5F5;">
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#7B0000;"><span style="background:#BB0000;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</span>Concession Agent</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PCE: Idea — full width -->
+      <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(106,109,112,0.10);border:1px solid #D9DBDD;margin-top:16px;">
+        <div style="background:linear-gradient(90deg,#4A4D50,#6A6D70);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:14px;font-weight:700;">💡 Idea — Concept Stage</span>
+          <span style="background:rgba(255,255,255,0.20);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:700;">16 agents</span>
+        </div>
+        <div style="background:#FAFAFA;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">01</span>Asset Capitalization Agent for Measurement Object</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">02</span>Settlement Rule Generation</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">03</span>Allocation Strategy Recommendation Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">04</span>Distribution &amp; Assessment Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">05</span>Cost Center Variance Analysis Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">06</span>Error Resolution – Cost Center</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">07</span>Smart Overhead Activities Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">08</span>Financial Analysis Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">09</span>Splitting Rule Optimiser Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">10</span>Material Price Variance Analysis Agent</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">11</span>Costing Analysis Assistant</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">12</span>Production / Process Order Variance Analysis</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">13</span>Error Resolution Production and Process Orders</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">14</span>Revenue Reconciliation Agent – Event-Based Revenue Recognition</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">15</span>Real-Time Issue / Closing Agent (EBRR)</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-right:1px solid #EEEEEE;font-size:12.5px;color:#4A4D50;"><span style="color:#AAAAAA;font-weight:700;min-width:20px;">16</span>Budget Information for Controller</div>
+          <div style="padding:9px 16px;border-right:1px solid #EEEEEE;"></div>
+          <div style="padding:9px 16px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /.page -->
+
+<!-- ═══════════════ 06 — PM & DEV TEAM ALIGNMENT ════════════════ -->
+<div class="page">
+  <div class="section" id="alignment">
+    <div class="section-header" style="background:linear-gradient(90deg,#00695C,#00897B);">
+      <div class="section-number">👥</div>
+      <h2>👥 PM &amp; Dev Team Alignment per Agent</h2>
+    </div>
+    <div class="section-body">
+
+      <p class="text-subtle" style="margin-bottom:24px;">
+        Each agent has a designated <strong style="color:var(--sap-blue);">👤 Product Manager (PM)</strong> and
+        <strong style="color:var(--sap-green-ga);">🛠️ Development Manager (DM)</strong> responsible for delivery.
+        This table ensures <strong style="color:var(--sap-navy);">clear ownership</strong> and cross-team coordination across
+        <strong style="color:var(--sap-blue);">☁️ PUC</strong> and <strong style="color:var(--sap-joule-purple);">🔒 PCE</strong>.
+      </p>
+
+      <!-- PUC Alignment Table -->
+      <div class="subsection-title highlight-blue">☁️ PUC (Public Cloud) — PM &amp; Dev Team per Agent</div>
+
+      <p style="font-size:12.5px;color:var(--sap-text-subtle);margin:10px 0 16px;">
+        Click any cell to edit. Changes auto-saved in your browser. &nbsp;✏️
+      </p>
+
+      <div id="puc-boxes-container"></div>
+
+      <p style="font-size:12px;color:var(--sap-text-subtle);margin-top:8px;">✅ Changes auto-saved in your browser</p>
+
+      <!-- PCE Alignment Table — PM-Box format (mirrors PUC) -->
+      <div class="subsection-title highlight-purple mt-32">🔒 PCE (Private Cloud) — PM &amp; Dev Team per Agent</div>
+
+      <p style="font-size:12.5px;color:var(--sap-text-subtle);margin:10px 0 16px;">
+        Click any cell to edit. Changes auto-saved in your browser. &nbsp;✏️
+      </p>
+
+      <div id="pce-boxes-container"></div>
+
+      <p style="font-size:12px;color:var(--sap-text-subtle);margin-top:8px;">✅ Changes auto-saved in your browser</p>
+
+      <div style="margin-top:20px;padding:14px 18px;background:#FFF8E1;border-left:4px solid #F0AB00;border-radius:4px;font-size:13px;color:var(--sap-text);">
+        <strong style="color:var(--sap-navy);">📝 Note:</strong> Click any cell to update PM / DM / Agent / Status fields.
+        Use the <a href="https://sap.sharepoint.com/:x:/s/124797/IQA-TOn762b1SaXzm7JTG0mgATX4xdVrDWOcjN4gwZ2uTgo?CID=6BE354CA-1F58-41C9-A7F4-3B48C233DBCF&wdLOR=cB15F0E80-92D4-4D56-9CD5-138CAEF624D4" target="_blank" style="color:var(--sap-blue);font-weight:700;">📎 Consolidated SharePoint List</a> as the source of truth.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ 07 — PUC & PCE ALIGNMENT ════════════════ -->
+<div class="page">
+  <div class="section" id="puc-pce-alignment" style="border-top-color:#6A2C8E;">
+    <div class="section-header" style="background:linear-gradient(90deg,#4A1580,#6A2C8E);">
+      <div class="section-number">🤝</div>
+      <h2>🤝 PUC &amp; PCE Alignment — Decision-Making &amp; Action Points</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- ── Shared Decision-Making Process ── -->
+      <div class="subsection-title highlight-purple">⚖️ Shared Decision-Making Process</div>
+
+      <!-- Process flow -->
+      <div style="display:flex;align-items:stretch;gap:0;margin-top:20px;flex-wrap:wrap;">
+
+        <div style="flex:1;min-width:140px;border-radius:10px 0 0 10px;background:linear-gradient(135deg,#0040B0,#0070F2);color:#fff;padding:20px 16px;text-align:center;position:relative;">
+          <div style="font-size:26px;margin-bottom:8px;">💡</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">1. Propose</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.5;">Either PUC or PCE raises a new agent idea or change request in the shared backlog</div>
+          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;z-index:2;">▶</div>
+        </div>
+
+        <div style="flex:1;min-width:140px;background:linear-gradient(135deg,#3A1F7A,#5C36A3);color:#fff;padding:20px 16px;text-align:center;position:relative;">
+          <div style="font-size:26px;margin-bottom:8px;">🔍</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">2. Review</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.5;">Joint PUC + PCE review in bi-weekly sync. PM &amp; DM from both sides assess scope and feasibility</div>
+          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;z-index:2;">▶</div>
+        </div>
+
+        <div style="flex:1;min-width:140px;background:linear-gradient(135deg,#006D6D,#00A8A8);color:#fff;padding:20px 16px;text-align:center;position:relative;">
+          <div style="font-size:26px;margin-bottom:8px;">✅</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">3. Decide</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.5;">Consensus decision: assign to PUC, PCE, or shared ownership. Logged in consolidated list</div>
+          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;z-index:2;">▶</div>
+        </div>
+
+        <div style="flex:1;min-width:140px;background:linear-gradient(135deg,#1B6B1B,#188918);color:#fff;padding:20px 16px;text-align:center;position:relative;">
+          <div style="font-size:26px;margin-bottom:8px;">⚙️</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">4. Build</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.5;">Assigned team leads development. Status tracked via Aha! Initiative AIOAIF-S-20</div>
+          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;z-index:2;">▶</div>
+        </div>
+
+        <div style="flex:1;min-width:140px;border-radius:0 10px 10px 0;background:linear-gradient(135deg,#A63200,#D14900);color:#fff;padding:20px 16px;text-align:center;">
+          <div style="font-size:26px;margin-bottom:8px;">📣</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">5. Communicate</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.5;">Joint alignment with Product Marketing. Release communicated across both cloud editions</div>
+        </div>
+
+      </div>
+
+      <!-- Principles -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px;">
+        <div style="background:#EDE7F6;border-left:4px solid #6A2C8E;border-radius:6px;padding:16px;">
+          <div style="font-size:16px;margin-bottom:6px;">🤝</div>
+          <div style="font-weight:700;color:#4A1580;margin-bottom:4px;font-size:13px;">One Shared Assistant\Agent</div>
+          <div style="font-size:12.5px;color:var(--sap-text-subtle);line-height:1.5;">A single assistant definition serves both PUC and PCE. No duplicate definitions.</div>
+        </div>
+        <div style="background:#E3F2FD;border-left:4px solid #0070F2;border-radius:6px;padding:16px;">
+          <div style="font-size:16px;margin-bottom:6px;">👤</div>
+          <div style="font-weight:700;color:#0040B0;margin-bottom:4px;font-size:13px;">Clear Agent Ownership</div>
+          <div style="font-size:12.5px;color:var(--sap-text-subtle);line-height:1.5;">Each agent has exactly one PM and one DM. Cross-team agents are explicitly flagged.</div>
+        </div>
+        <div style="background:#E8F5E9;border-left:4px solid #188918;border-radius:6px;padding:16px;">
+          <div style="font-size:16px;margin-bottom:6px;">📎</div>
+          <div style="font-weight:700;color:#1B6B1B;margin-bottom:4px;font-size:13px;">Single Source of Truth</div>
+          <div style="font-size:12.5px;color:var(--sap-text-subtle);line-height:1.5;">The <a href="https://sap.sharepoint.com/:x:/s/124797/IQA-TOn762b1SaXzm7JTG0mgATX4xdVrDWOcjN4gwZ2uTgo?CID=6BE354CA-1F58-41C9-A7F4-3B48C233DBCF&wdLOR=cB15F0E80-92D4-4D56-9CD5-138CAEF624D4" target="_blank" style="color:#188918;font-weight:700;">SharePoint consolidated list</a> is the authoritative record — updated after every sync.</div>
+        </div>
+      </div>
+
+      <!-- ── Open Items / Action Points ── -->
+      <div class="subsection-title highlight-orange mt-32">📋 Open Items &amp; Action Points</div>
+      <p class="text-subtle" style="margin-bottom:16px;">
+        Click any <strong style="color:var(--sap-blue);">✏️ editable</strong> cell to update. Changes are auto-saved in your browser.
+      </p>
+
+      <div class="status-table-wrap">
+        <table class="status-table" id="action-table" style="font-size:13px;">
+          <thead>
+            <tr>
+              <th style="width:4%;text-align:center;">#</th>
+              <th style="width:28%;">📌 Action Item <span class="edit-hint">✏️ editable</span></th>
+              <th style="width:14%;">👤 Owner <span class="edit-hint">✏️ editable</span></th>
+              <th style="width:10%;text-align:center;">☁️ Cloud</th>
+              <th style="width:14%;">📅 Due Date <span class="edit-hint">✏️ editable</span></th>
+              <th style="width:14%;text-align:center;">🚦 Priority <span class="edit-hint">✏️ editable</span></th>
+              <th style="width:16%;text-align:center;">Status <span class="edit-hint">✏️ editable</span></th>
+            </tr>
+          </thead>
+          <tbody id="action-tbody">
+            <tr data-action-row="0">
+              <td style="text-align:center;color:#aaa;font-weight:700;">1</td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Enter action item…">Confirm PM &amp; DM ownership for all Idea-stage agents</span></td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Owner…">All PMs</span></td>
+              <td style="text-align:center;"><span style="background:#E3F2FD;color:#0040B0;border-radius:12px;padding:3px 10px;font-size:11px;font-weight:700;">☁️ PUC+PCE</span></td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Due date…">June 2026</span></td>
+              <td style="text-align:center;"><span class="editable-cell action-edit" contenteditable="true" data-placeholder="High / Med / Low" style="text-align:center;">🔴 High</span></td>
+              <td style="text-align:center;"><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Status…" style="text-align:center;">🟡 In Progress</span></td>
+            </tr>
+            <tr data-action-row="1">
+              <td style="text-align:center;color:#aaa;font-weight:700;">2</td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Enter action item…">Align assistant naming with Product Marketing</span></td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Owner…">Lead PM</span></td>
+              <td style="text-align:center;"><span style="background:#EDE7F6;color:#4A1580;border-radius:12px;padding:3px 10px;font-size:11px;font-weight:700;">🔒 PCE</span></td>
+              <td><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Due date…">July 2026</span></td>
+              <td style="text-align:center;"><span class="editable-cell action-edit" contenteditable="true" data-placeholder="High / Med / Low" style="text-align:center;">🟠 Medium</span></td>
+              <td style="text-align:center;"><span class="editable-cell action-edit" contenteditable="true" data-placeholder="Status…" style="text-align:center;">🔵 Open</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Add row button -->
+      <div style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+        <button id="add-action-row" style="background:var(--sap-blue);color:#fff;border:none;border-radius:6px;padding:8px 20px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
+          ➕ Add Action Item
+        </button>
+        <span style="font-size:12px;color:var(--sap-text-subtle);">All changes auto-saved in your browser</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ CALL TO ACTION BANNER ════════════════ -->
+<div style="
+  background: linear-gradient(135deg, var(--sap-navy) 0%, var(--sap-joule-purple) 55%, var(--sap-purple-mid) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 56px 32px 48px;
+  margin-top: 0;
+">
+  <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sap-purple-light);margin-bottom:14px;">
+    🚀 All-in on AI &nbsp;|&nbsp; Autonomous Finance
+  </div>
+  <div style="font-size:38px;font-weight:700;line-height:1.2;margin-bottom:10px;">
+    Let's Build Together! 🤝
+  </div>
+  <div style="font-size:18px;font-weight:300;color:var(--sap-purple-light);margin-bottom:6px;">
+    ☁️ Public Cloud &nbsp;+&nbsp; Private Cloud
+  </div>
+  <div style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:32px;">
+    One team, shared assistants, clear ownership per agent.
+  </div>
+  <div style="width:60px;height:3px;background:var(--sap-blue);margin:0 auto 32px;"></div>
+  <a href="https://sap.sharepoint.com/:x:/s/124797/IQA-TOn762b1SaXzm7JTG0mgATX4xdVrDWOcjN4gwZ2uTgo?CID=6BE354CA-1F58-41C9-A7F4-3B48C233DBCF&wdLOR=cB15F0E80-92D4-4D56-9CD5-138CAEF624D4" target="_blank" style="
+    display: inline-block;
+    background: var(--sap-blue);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  ">
+    📎&nbsp; Consolidated Agents &amp; Assistants List &nbsp;→
+  </a>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="doc-footer">
+  © 2026 <strong style="color:#fff;">SAP SE</strong> or an SAP affiliate company. All rights reserved. &nbsp;|&nbsp;
+  🏢 Management Accounting &nbsp;|&nbsp; 🤖 AI Agents &amp; Assistants &nbsp;|&nbsp; 📅 June 2026 &nbsp;|&nbsp;
+  <strong style="color:#fff;">🔒 SAP SE — Confidential</strong>
+</footer>
+
+<!-- EDITABLE ALIGNMENT CELLS -->
+<div id="save-toast">✅ Changes saved</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* Toast */
+  var toastTimer;
+  function showToast() {
+    var t = document.getElementById('save-toast');
+    if (!t) return;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2000);
+  }
+
+  /* ALIGNMENT TABLE EDITABLE CELLS */
+  var ALIGN_KEY = 'ma_alignment_v1';
+  function loadAlignData() {
+    try { return JSON.parse(localStorage.getItem(ALIGN_KEY) || '{}'); } catch(e) { return {}; }
+  }
+  function saveAlignData() {
+    var data = {};
+    document.querySelectorAll('table[data-alignment]').forEach(function(table) {
+      var tid = table.dataset.alignment;
+      table.querySelectorAll('tbody tr').forEach(function(tr, ri) {
+        [2,3].forEach(function(ci) {
+          var td = tr.querySelectorAll('td')[ci];
+          if (!td) return;
+          var span = td.querySelector('.editable-cell');
+          if (span) data[tid+'_r'+ri+'_c'+ci] = span.textContent.trim();
+        });
+      });
+    });
+    localStorage.setItem(ALIGN_KEY, JSON.stringify(data));
+    showToast();
+  }
+  document.querySelectorAll('table[data-alignment]').forEach(function(table) {
+    var tid = table.dataset.alignment;
+    var saved = loadAlignData();
+    table.querySelectorAll('tbody tr').forEach(function(tr, ri) {
+      [2,3].forEach(function(ci) {
+        var td = tr.querySelectorAll('td')[ci];
+        if (!td) return;
+        var ph = ci===2 ? 'Enter PM name' : 'Enter DM name';
+        var existing = td.innerText.trim().replace(/\s+/g,' ');
+        var span = document.createElement('span');
+        span.className = 'editable-cell';
+        span.contentEditable = 'true';
+        span.setAttribute('data-placeholder', ph);
+        span.setAttribute('spellcheck','false');
+        var k = tid+'_r'+ri+'_c'+ci;
+        span.textContent = (saved[k]!==undefined) ? saved[k] : existing;
+        span.classList.toggle('empty', !span.textContent.trim());
+        var saveT;
+        span.addEventListener('input', function() {
+          span.classList.toggle('empty', !span.textContent.trim());
+          clearTimeout(saveT); saveT = setTimeout(saveAlignData, 800);
+        });
+        td.style.padding = '6px 8px';
+        td.innerHTML = '';
+        td.appendChild(span);
+      });
+    });
+  });
+
+  /* ACTION TABLE */
+  var ACTION_KEY = 'ma_actions_v2';
+  function saveActions() {
+    var rows = [];
+    document.querySelectorAll('#action-tbody tr').forEach(function(tr) {
+      var cells = [];
+      tr.querySelectorAll('.action-edit').forEach(function(el){ cells.push(el.textContent.trim()); });
+      rows.push(cells);
+    });
+    localStorage.setItem(ACTION_KEY, JSON.stringify(rows));
+    showToast();
+  }
+  function wireActionRow(tr, idx) {
+    tr.querySelectorAll('.action-edit').forEach(function(el) {
+      el.classList.toggle('empty', !el.textContent.trim());
+      el.addEventListener('input', function() {
+        el.classList.toggle('empty', !el.textContent.trim());
+        clearTimeout(el._t); el._t = setTimeout(saveActions, 800);
+      });
+    });
+    var num = tr.querySelector('td:first-child');
+    if (num) num.textContent = idx + 1;
+  }
+  try {
+    var savedActions = JSON.parse(localStorage.getItem(ACTION_KEY)||'null');
+    if (savedActions) {
+      var existingRows = Array.from(document.querySelectorAll('#action-tbody tr'));
+      savedActions.forEach(function(cells, i) {
+        var tr = existingRows[i];
+        if (!tr) return;
+        var editCells = tr.querySelectorAll('.action-edit');
+        cells.forEach(function(v, ci){ if(editCells[ci]) editCells[ci].textContent=v; });
+      });
+      Array.from(document.querySelectorAll('#action-tbody tr')).forEach(function(tr,i){
+        if(i>=savedActions.length) tr.remove();
+      });
+    }
+  } catch(e){}
+  Array.from(document.querySelectorAll('#action-tbody tr')).forEach(function(tr,i){ wireActionRow(tr,i); });
+  var addActionBtn = document.getElementById('add-action-row');
+  if (addActionBtn) {
+    addActionBtn.addEventListener('click', function() {
+      var tbody = document.getElementById('action-tbody');
+      var rows = tbody.querySelectorAll('tr');
+      var idx = rows.length;
+      var tmpl = rows[0].cloneNode(true);
+      tmpl.querySelectorAll('.action-edit').forEach(function(el){ el.textContent=''; el.classList.add('empty'); });
+      tmpl.querySelector('td:first-child').textContent = idx+1;
+      tbody.appendChild(tmpl);
+      wireActionRow(tmpl, idx);
+      tmpl.querySelector('.action-edit').focus();
+      saveActions();
+    });
+  }
+
+  /* PUC PM BOXES */
+  var PUC_KEY = 'ma_puc_v3';
+  var INITIAL = [
+    {pm:'Chenchu Zhong',       av:'CZ',dm:'Trista Zhang',                   agent:'Project WIP Agent',                                              rs:'In Development'},
+    {pm:'Chenchu Zhong',       av:'CZ',dm:'Trista Zhang',                   agent:'Margin Analysis Agent',                                          rs:'Prototyping'},
+    {pm:'Diana Mala',          av:'DM',dm:'Boris Tomcik',                   agent:'Overhead Master Data Mass Change Agent',                         rs:'Idea'},
+    {pm:'Eugen Simandel',      av:'ES',dm:'Zdenek Marosz / Nikolas Stastny',agent:'Statistical Key Figures Agent',                                  rs:'Idea'},
+    {pm:'Eugen Simandel',      av:'ES',dm:'Boris Tomcik',                   agent:'Explain Me - Agentic Concept',                                   rs:'Idea'},
+    {pm:'Eugen Simandel',      av:'ES',dm:'Zdenek Marosz',                  agent:'Allocation Results Agent',                                       rs:'GA'},
+    {pm:'Eva Wang',            av:'EW',dm:'Olivia Wang',                    agent:'AI-Assisted Error Resolution for Cost Accounting',               rs:'GA'},
+    {pm:'Eva Wang',            av:'EW',dm:'TBD',                            agent:'Cost Component Breakdown Correction Agent',                      rs:'Idea'},
+    {pm:'Grace Zou',           av:'GZ',dm:'Vincent Zhang',                  agent:'Actual Costing Analysis Agent',                                  rs:'Idea'},
+    {pm:'Grace Zou',           av:'GZ',dm:'Vincent Zhang',                  agent:'Actual Costing Error Resolution Agent',                          rs:'Idea'},
+    {pm:'Katerina Zvachulova', av:'KZ',dm:'Gabriela Pacakova',              agent:'CO Reposting Agent',                                             rs:'Idea'},
+    {pm:'Katerina Zvachulova', av:'KZ',dm:'Gabriela Pacakova',              agent:'(Settlement) Rule Agent',                                        rs:'Idea'},
+    {pm:'Marvin Fuehrer',      av:'MF',dm:'Andrea Pecht',                   agent:'AI-Assisted Costing Variant Explanation',                        rs:'On Hold'},
+    {pm:'Marvin Fuehrer',      av:'MF',dm:'Andrea Pecht',                   agent:'Automatic Material Costing Agent',                               rs:'Idea'},
+    {pm:'Marvin Fuehrer',      av:'MF',dm:'Andrea Pecht',                   agent:'Material Cost Simulation Agent',                                 rs:'Idea'},
+    {pm:'Marvin Fuehrer',      av:'MF',dm:'Andrea Pecht',                   agent:'Material Price Spike Agent',                                     rs:'Idea'},
+    {pm:'Marvin Fuehrer',      av:'MF',dm:'Andrea Pecht / Trista Zhang',    agent:'Balance Sheet Valuation Consistency and Execution Agent',        rs:'Idea'},
+    {pm:'Petr Eisinger',       av:'PE',dm:'Petr Babic',                     agent:'Event-Based Revenue Recognition - Revenue Reconciliation Agent', rs:'Idea'},
+    {pm:'Petr Eisinger',       av:'PE',dm:'Petr Babic',                     agent:'Real-Time Issue / Closing Agent (EBRR)',                         rs:'Idea'},
+    {pm:'Radovan Tanac',       av:'RT',dm:'Michal Holinek',                 agent:'AI Agent for Organizational Changes',                            rs:'Idea'},
+    {pm:'Roman Rapp',          av:'RR',dm:'Marcel Reinsch',                 agent:'Budget Management Assistant',                                    rs:'Idea'},
+    {pm:'Roman Rapp',          av:'RR',dm:'Marcel Reinsch',                 agent:'Predictive Accounting Error Resolution Agent',                   rs:'Idea'},
+    {pm:'Roman Rapp',          av:'RR',dm:'Marcel Reinsch / Trista Zhang',  agent:'AI-Assisted Analytical Business Insights (5 Booklets)',          rs:'GA'},
+    {pm:'Sen Li',              av:'SL',dm:'Olivia Wang',                    agent:'Production Plan Cost Simulation Agent',                          rs:'Idea'},
+    {pm:'Sen Li',              av:'SL',dm:'Olivia Wang',                    agent:'Production Cost Analysis Agent',                                 rs:'In Development'},
+    {pm:'Sen Li',              av:'SL',dm:'Olivia Wang',                    agent:'Production Cost Accounting Closing Agent',                       rs:'In Development'},
+    {pm:'Sen Li',              av:'SL',dm:'Olivia Wang',                    agent:'Production Cost Accounting Error Resolution Agent',              rs:'In Development'},
+    {pm:'Xin Fang',            av:'XF',dm:'Jasmin Haas',                    agent:'Revenue Contracts Combine Agent',                                rs:'Idea'},
+    {pm:'Xin Fang',            av:'XF',dm:'Jasmin Haas',                    agent:'Concession Agent',                                               rs:'Idea'}
+  ];
+  var BOX_COLORS = [
+    {border:'#0070F2',header:'linear-gradient(90deg,#0040B0,#0070F2)'},
+    {border:'#6A2C8E',header:'linear-gradient(90deg,#4A1580,#6A2C8E)'},
+    {border:'#006D6D',header:'linear-gradient(90deg,#006D6D,#00A8A8)'},
+    {border:'#188918',header:'linear-gradient(90deg,#1B6B1B,#188918)'}
+  ];
+  function savePUC() {
+    var out=[];
+    document.querySelectorAll('#puc-boxes-container .pm-box').forEach(function(box){
+      box.querySelectorAll('tr.pm-data-row').forEach(function(tr){
+        var f=tr.querySelectorAll('.et-field');
+        out.push({pm:f[0]?f[0].textContent.trim():'',dm:f[1]?f[1].textContent.trim():'',agent:f[2]?f[2].textContent.trim():'',rs:f[3]?f[3].textContent.trim():''});
+      });
+    });
+    localStorage.setItem(PUC_KEY,JSON.stringify(out));
+    showToast();
+  }
+  function wireEt(el) {
+    el.classList.toggle('empty',!el.textContent.trim());
+    el.addEventListener('input',function(){
+      el.classList.toggle('empty',!el.textContent.trim());
+      clearTimeout(el._st); el._st=setTimeout(savePUC,700);
+    });
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();el.blur();}});
+  }
+  function makeEt(val,ph) {
+    var s=document.createElement('span');
+    s.className='et-field'+(val?'':' empty');
+    s.contentEditable='true'; s.spellcheck=false;
+    s.dataset.placeholder=ph; s.textContent=val;
+    wireEt(s); return s;
+  }
+  function makeRow(row) {
+    var tr=document.createElement('tr'); tr.className='pm-data-row';
+    [{cls:'col-pm',val:row.pm,ph:'PM name'},{cls:'col-dm',val:row.dm,ph:'DM name'},{cls:'col-ag',val:row.agent,ph:'Agent name'},{cls:'col-rs',val:row.rs,ph:'Release Status'}].forEach(function(c){
+      var td=document.createElement('td'); td.className=c.cls; td.appendChild(makeEt(c.val,c.ph)); tr.appendChild(td);
+    });
+    return tr;
+  }
+  function buildBoxes(data) {
+    var container=document.getElementById('puc-boxes-container');
+    if(!container){console.warn('puc-boxes-container not found');return;}
+    container.innerHTML='';
+    var groups=[];
+    data.forEach(function(row){
+      var last=groups[groups.length-1];
+      if(last&&last.pm===row.pm){last.rows.push(row);}
+      else{groups.push({pm:row.pm,av:row.av||(row.pm||'?').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase(),rows:[row]});}
+    });
+    groups.forEach(function(g,gi){
+      var col=BOX_COLORS[gi%BOX_COLORS.length];
+      var box=document.createElement('div');
+      box.className='pm-box'; box.dataset.pm=g.pm;
+      box.style.border='2px solid '+col.border;
+      var hdr=document.createElement('div');
+      hdr.className='pm-box-header'; hdr.style.background=col.header;
+      var av=document.createElement('div'); av.className='pm-box-avatar'; av.textContent=g.av;
+      var nd=document.createElement('div');
+      nd.innerHTML='<div style="font-size:16px;font-weight:700;">\ud83d\udc64 '+g.pm+'</div><div class="pm-box-meta">'+g.rows.length+' agent'+(g.rows.length!==1?'s':'')+'</div>';
+      hdr.appendChild(av); hdr.appendChild(nd); box.appendChild(hdr);
+      var tbl=document.createElement('table'); tbl.className='pm-box-table';
+      var thead=document.createElement('thead');
+      var hr=document.createElement('tr');
+      [{cls:'col-pm',lbl:'\ud83d\udc64 PM'},{cls:'col-dm',lbl:'\ud83d\udee0\ufe0f DM'},{cls:'col-ag',lbl:'\ud83e\udd16 Agent'},{cls:'col-rs',lbl:'\ud83d\udea6 Release Status'}].forEach(function(c){
+        var th=document.createElement('th'); th.className=c.cls; th.textContent=c.lbl; hr.appendChild(th);
+      });
+      thead.appendChild(hr); tbl.appendChild(thead);
+      var tbody=document.createElement('tbody');
+      g.rows.forEach(function(row){tbody.appendChild(makeRow(row));});
+      tbl.appendChild(tbody); box.appendChild(tbl);
+      container.appendChild(box);
+    });
+    buildFilterPills();
+  }
+  function buildFilterPills() {
+    var bar=document.getElementById('puc-filter-bar');
+    if(!bar) return;
+    bar.innerHTML='<span style="font-size:12px;color:var(--sap-text-subtle);font-weight:600;margin-right:4px;">\ud83d\udc64 Filter by PM:</span>';
+    var PCOLS=['#0070F2','#6A2C8E','#006D6D','#D14900','#188918','#AA0808','#0040B0','#3A1F7A'];
+    var pi=0;
+    var ab=document.createElement('button'); ab.className='pm-filter-btn all-btn active'; ab.textContent='All PMs'; ab.dataset.pm='__all__'; bar.appendChild(ab);
+    document.querySelectorAll('#puc-boxes-container .pm-box').forEach(function(card){
+      var pm=card.dataset.pm; if(!pm) return;
+      var c=PCOLS[pi++%PCOLS.length];
+      var av=(pm||'').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase();
+      var btn=document.createElement('button'); btn.className='pm-filter-btn'; btn.dataset.pm=pm;
+      btn.innerHTML='<span class="pm-avatar-sm" style="background:'+c+';color:#fff;">'+av+'</span>'+pm;
+      bar.appendChild(btn);
+    });
+    bar.addEventListener('click',function(e){
+      var btn=e.target.closest('.pm-filter-btn'); if(!btn) return;
+      bar.querySelectorAll('.pm-filter-btn').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      var pm=btn.dataset.pm;
+      document.querySelectorAll('#puc-boxes-container .pm-box').forEach(function(card){
+        card.style.display=(pm==='__all__'||card.dataset.pm===pm)?'':'none';
+      });
+    });
+  }
+  try {
+    var savedPUC=JSON.parse(localStorage.getItem(PUC_KEY)||'null');
+    if(savedPUC&&savedPUC.length){
+      savedPUC.forEach(function(s,i){
+        if(!INITIAL[i]) return;
+        if(s.pm)    INITIAL[i].pm=s.pm;
+        if(s.dm)    INITIAL[i].dm=s.dm;
+        if(s.agent) INITIAL[i].agent=s.agent;
+        INITIAL[i].rs=s.rs||'';
+      });
+    }
+  } catch(e){}
+  buildBoxes(INITIAL);
+
+  /* ── PCE PM BOXES (mirrors PUC pattern) ──────────────────────── */
+  var PCE_KEY = 'ma_pce_v2';
+  var PCE_INITIAL = [
+    // Septimiu Liviu Gherghel
+    {pm:'Septimiu Liviu Gherghel', av:'SG', dm:'Li, Jenny',    agent:'Asset Capitalization Agent for Measurement Object', rs:'Idea'},
+    // Henrik Kiessler
+    {pm:'Henrik Kiessler', av:'HK', dm:'H. Shwetha',           agent:'SettleXpert Agent',                                  rs:'Prototyping'},
+    {pm:'Henrik Kiessler', av:'HK', dm:'H. Shwetha',           agent:'Settlement Rule Generation',                         rs:'Idea'},
+    {pm:'Henrik Kiessler', av:'HK', dm:'H. Shwetha',           agent:'Splitting Rule Optimiser Agent',                     rs:'Idea'},
+    // Janet Dorothy Salmon — all agents combined in one box
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Marei Dornick',      agent:'AI Generated Rules for Organizational Changes',      rs:'On Hold'},
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Marei Dornick',      agent:'Anomaly Detection and Pattern Analysis of Journal Entries', rs:'Prototyping'},
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Marei Dornick',      agent:'Joule Cost Center Budget (Extension to Transfer Budget)', rs:'In Development'},
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Marei Dornick',      agent:'AI-Assisted Analytical Business Insights – Profit Center Review Booklet', rs:'In Development'},
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Winfried Teltscher', agent:'Costing Analysis Assistant',                         rs:'Idea'},
+    {pm:'Janet Dorothy Salmon', av:'JS', dm:'Wang, Ethan',        agent:'Production / Process Order Variance Analysis',       rs:'Idea'},
+    // Suman Puthadi
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Shwetha',             agent:'Allocation Strategy Recommendation Agent',           rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Shwetha',             agent:'Distribution & Assessment Agent',                    rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Shwetha, Prashanth, Venkata', agent:'Cost Center Variance Analysis Agent',        rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Shwetha / Venkata',  agent:'Error Resolution – Cost Center',                     rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Shwetha',             agent:'Smart Overhead Activities Agent',                    rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'TBD',                    agent:'Manage Internal Order Agent',                        rs:'NA'},
+    {pm:'Suman Puthadi', av:'SP', dm:'Scope need to be finalized', agent:'Budget Information for Controller',              rs:'Idea'},
+    {pm:'Suman Puthadi', av:'SP', dm:'H. Swetha',              agent:'Error Resolution Production and Process Orders',     rs:'Idea'},
+    // Martin Brezik
+    {pm:'Martin Brezik', av:'MB', dm:'Klisak Jan',             agent:'AI-Assisted Costing Variant Explanation',            rs:'In Development'},
+    // (No PM listed)
+    {pm:'(Unassigned)',  av:'--', dm:'',                        agent:'Material Price Variance Analysis Agent',             rs:'Idea'},
+    // Volkmar Zahn
+    {pm:'Volkmar Zahn', av:'VZ', dm:'Sonja Barnet',            agent:'[BETA] Revenue Contracts Combine Agent',             rs:'Beta'},
+    {pm:'Volkmar Zahn', av:'VZ', dm:'Venkata Adhikamsetty',    agent:'Revenue Reconciliation Agent – Event-Based Revenue Recognition', rs:'Idea'},
+    {pm:'Volkmar Zahn', av:'VZ', dm:'Petr Chmela',             agent:'Revenue Accounting – Closing Support Agent',         rs:'Prototyping'},
+    {pm:'Volkmar Zahn', av:'VZ', dm:'Swetlana Spiess',         agent:'Real-Time Issue / Closing Agent (EBRR)',             rs:'Idea'},
+    // Saurabh Saxena
+    {pm:'Saurabh Saxena', av:'SS', dm:'Sonja Barnet',          agent:'AI-Assisted Predictive Accounting Error Explanation', rs:'In Development'},
+  ];
+
+  var PCE_BOX_COLORS = [
+    {border:'#6A2C8E',header:'linear-gradient(90deg,#4A1580,#6A2C8E)'},
+    {border:'#0070F2',header:'linear-gradient(90deg,#0040B0,#0070F2)'},
+    {border:'#006D6D',header:'linear-gradient(90deg,#006D6D,#00A8A8)'},
+    {border:'#188918',header:'linear-gradient(90deg,#1B6B1B,#188918)'},
+    {border:'#D14900',header:'linear-gradient(90deg,#A63200,#D14900)'},
+    {border:'#AA0808',header:'linear-gradient(90deg,#7B0000,#AA0808)'},
+  ];
+
+  function savePCE() {
+    var out = [];
+    document.querySelectorAll('#pce-boxes-container .pm-box').forEach(function(box) {
+      box.querySelectorAll('tr.pm-data-row').forEach(function(tr) {
+        var f = tr.querySelectorAll('.et-field');
+        out.push({pm:f[0]?f[0].textContent.trim():'', dm:f[1]?f[1].textContent.trim():'', agent:f[2]?f[2].textContent.trim():'', rs:f[3]?f[3].textContent.trim():''});
+      });
+    });
+    localStorage.setItem(PCE_KEY, JSON.stringify(out));
+    showToast();
+  }
+
+  function wireEtPCE(el) {
+    el.classList.toggle('empty', !el.textContent.trim());
+    el.addEventListener('input', function() {
+      el.classList.toggle('empty', !el.textContent.trim());
+      clearTimeout(el._st); el._st = setTimeout(savePCE, 700);
+    });
+    el.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
+  }
+
+  function makeEtPCE(val, ph) {
+    var s = document.createElement('span');
+    s.className = 'et-field' + (val ? '' : ' empty');
+    s.contentEditable = 'true'; s.spellcheck = false;
+    s.dataset.placeholder = ph; s.textContent = val;
+    wireEtPCE(s); return s;
+  }
+
+  function makeRowPCE(row) {
+    var tr = document.createElement('tr'); tr.className = 'pm-data-row';
+    [{cls:'col-pm',val:row.pm,ph:'PM name'},{cls:'col-dm',val:row.dm,ph:'DM name'},{cls:'col-ag',val:row.agent,ph:'Agent name'},{cls:'col-rs',val:row.rs,ph:'Release Status'}].forEach(function(c) {
+      var td = document.createElement('td'); td.className = c.cls; td.appendChild(makeEtPCE(c.val, c.ph)); tr.appendChild(td);
+    });
+    return tr;
+  }
+
+  function buildPCEBoxes(data) {
+    var container = document.getElementById('pce-boxes-container');
+    if (!container) return;
+    container.innerHTML = '';
+    var groups = [];
+    data.forEach(function(row) {
+      var last = groups[groups.length - 1];
+      if (last && last.pm === row.pm) { last.rows.push(row); }
+      else { groups.push({pm:row.pm, av:row.av||(row.pm||'?').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase(), rows:[row]}); }
+    });
+    groups.forEach(function(g, gi) {
+      var col = PCE_BOX_COLORS[gi % PCE_BOX_COLORS.length];
+      var box = document.createElement('div');
+      box.className = 'pm-box'; box.dataset.pm = g.pm;
+      box.style.border = '2px solid ' + col.border;
+      var hdr = document.createElement('div');
+      hdr.className = 'pm-box-header'; hdr.style.background = col.header;
+      var av = document.createElement('div'); av.className = 'pm-box-avatar'; av.textContent = g.av;
+      var nd = document.createElement('div');
+      nd.innerHTML = '<div style="font-size:16px;font-weight:700;">👤 ' + g.pm + '</div><div class="pm-box-meta">' + g.rows.length + ' agent' + (g.rows.length !== 1 ? 's' : '') + '</div>';
+      hdr.appendChild(av); hdr.appendChild(nd); box.appendChild(hdr);
+      var tbl = document.createElement('table'); tbl.className = 'pm-box-table';
+      var thead = document.createElement('thead');
+      var hr = document.createElement('tr');
+      [{cls:'col-pm',lbl:'👤 PM'},{cls:'col-dm',lbl:'🛠️ DM'},{cls:'col-ag',lbl:'🤖 Agent'},{cls:'col-rs',lbl:'🚦 Release Status'}].forEach(function(c) {
+        var th = document.createElement('th'); th.className = c.cls; th.textContent = c.lbl; hr.appendChild(th);
+      });
+      thead.appendChild(hr); tbl.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      g.rows.forEach(function(row) { tbody.appendChild(makeRowPCE(row)); });
+      tbl.appendChild(tbody); box.appendChild(tbl);
+      container.appendChild(box);
+    });
+  }
+
+  try {
+    var savedPCE = JSON.parse(localStorage.getItem(PCE_KEY) || 'null');
+    if (savedPCE && savedPCE.length) {
+      savedPCE.forEach(function(s, i) {
+        if (!PCE_INITIAL[i]) return;
+        if (s.pm)    PCE_INITIAL[i].pm    = s.pm;
+        if (s.dm)    PCE_INITIAL[i].dm    = s.dm;
+        if (s.agent) PCE_INITIAL[i].agent = s.agent;
+        PCE_INITIAL[i].rs = s.rs || '';
+      });
+    }
+  } catch(e) {}
+  buildPCEBoxes(PCE_INITIAL);
+
+}); // end DOMContentLoaded
+</script>
+
+</body>
+</html>
