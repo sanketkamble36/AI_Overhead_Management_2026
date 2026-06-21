@@ -13,6 +13,7 @@
 <script src="https://unpkg.com/@azure/msal-browser/lib/msal-browser.min.js"></script>
 
 <script>
+  
 const msalConfig = {
     auth: {
         clientId: "7a405a92-f548-4f7e-87dc-b2cf3c4a6bd4",
@@ -33,6 +34,13 @@ async function login() {
 
 document.getElementById("loginBtn")
         .addEventListener("click", login);
+
+const accounts = msalInstance.getAllAccounts();
+
+if (accounts.length > 0) {
+    alert("Already logged in as: " + accounts[0].username);
+}
+
 </script>
   
 
