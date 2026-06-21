@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🤖 SAP Management Accounting – AI Agents &amp; Assistants | June 2026</title>
-
   
-  <script src="https://unpkg.com/@azure/msal-browser/lib/msal-browser.min.js"></script>
+  <button id="loginBtn"
+        style="position:fixed;top:10px;right:10px;z-index:9999;">
+    Login with Microsoft
+</button>
+
+<script src="https://unpkg.com/@azure/msal-browser/lib/msal-browser.min.js"></script>
 
 <script>
 const msalConfig = {
@@ -20,24 +24,17 @@ const msalConfig = {
 const msalInstance = new msal.PublicClientApplication(msalConfig);
 
 async function login() {
-    try {
+    await msalInstance.initialize();
 
-        await msalInstance.initialize();
-
-        const loginResponse = await msalInstance.loginPopup({
-            scopes: ["User.Read"]
-        });
-
-        alert("Logged in as: " + loginResponse.account.username);
-
-    } catch (error) {
-        console.error(error);
-        alert(error.message);
-    }
+    await msalInstance.loginRedirect({
+        scopes: ["User.Read"]
+    });
 }
 
-window.onload = login;
+document.getElementById("loginBtn")
+        .addEventListener("click", login);
 </script>
+  
 
   <style>
 
