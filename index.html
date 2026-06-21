@@ -42,21 +42,7 @@
     };
 
 })();
-
-const tokenResponse = await msalInstance.acquireTokenSilent({
-    scopes: [
-        "User.Read",
-        "Files.Read",
-        "Sites.Read.All"
-    ],
-    account: accounts[0]
-});
-
-const accessToken = tokenResponse.accessToken;
-
-console.log("Token acquired");
 </script>
-  
 
   <style>
 
