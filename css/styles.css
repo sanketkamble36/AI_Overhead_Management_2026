@@ -1,0 +1,194 @@
+/*
+ * styles.css
+ * Styles for the live SharePoint data section only.
+ * All existing page styles remain in index.html <style> tags — untouched.
+ */
+
+/* ── Auth bar ─────────────────────────────────────────────────────────────── */
+
+.live-auth-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 32px;
+  background: #fff;
+  border: 1px solid var(--sap-border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+#auth-signed-out { display: flex; align-items: center; gap: 10px; }
+#auth-signed-in  { display: none; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.auth-user-label { font-size: 13px; color: var(--sap-text-subtle); }
+#auth-user-name  { font-size: 13px; font-weight: 600; color: var(--sap-navy); }
+
+.connection-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.connection-status.connected    { background: #E8F5E9; color: #188918; }
+.connection-status.disconnected { background: #FFF3E0; color: #D14900; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+
+.btn-primary {
+  background: var(--sap-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--sap-blue-dark); }
+
+.btn-secondary {
+  background: #fff;
+  color: var(--sap-blue);
+  border: 1.5px solid var(--sap-blue);
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: #EBF4FF; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--sap-text-subtle);
+  border: 1.5px solid var(--sap-border);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-ghost:hover { border-color: var(--sap-blue); color: var(--sap-blue); }
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+
+#live-spinner {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--sap-text-subtle);
+}
+
+.spinner-ring {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--sap-border);
+  border-top-color: var(--sap-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error banner ────────────────────────────────────────────────────────── */
+
+#live-error-banner {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 8px 0 12px;
+  padding: 12px 16px;
+  background: #FFF0F0;
+  border: 1px solid #FFBDBD;
+  border-left: 4px solid #BB0000;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #BB0000;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────── */
+
+.live-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#live-search {
+  flex: 1;
+  min-width: 180px;
+  max-width: 300px;
+  padding: 7px 12px;
+  border: 1.5px solid var(--sap-border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--sap-text);
+}
+#live-search:focus { outline: none; border-color: var(--sap-blue); }
+
+#live-row-count { font-size: 12px; color: var(--sap-text-subtle); margin-left: auto; }
+#last-updated   { font-size: 11px; color: var(--sap-text-subtle); }
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+
+.live-table-wrapper { overflow-x: auto; }
+
+#live-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+#live-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--sap-navy);
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  user-select: none;
+}
+#live-table thead th.sortable          { cursor: pointer; }
+#live-table thead th.sortable:hover    { background: #2a3d52; }
+#live-table thead th.sort-asc::after   { content: ' ↑'; opacity: 0.75; }
+#live-table thead th.sort-desc::after  { content: ' ↓'; opacity: 0.75; }
+
+#live-table tbody tr { border-bottom: 1px solid var(--sap-border); }
+#live-table tbody tr:hover { background: #F0F6FF; }
+#live-table tbody td { padding: 9px 14px; vertical-align: middle; }
+
+.live-empty {
+  text-align: center;
+  color: var(--sap-text-subtle);
+  padding: 32px !important;
+  font-style: italic;
+}
+
+/* ── Badge helpers ───────────────────────────────────────────────────────── */
+
+.live-badge-sm  { font-size: 11px !important; }
+.live-led-other { font-size: 11px; font-weight: 600; color: #888; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .live-auth-bar { padding: 12px 16px; }
+  #live-search   { max-width: 100%; }
+  #live-row-count { margin-left: 0; }
+}
