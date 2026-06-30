@@ -21,7 +21,7 @@ export const CONFIG = {
   // ── Azure AD / MSAL ─────────────────────────────────────────────────────────
   auth: {
     clientId:    '7a405a92-f548-47e-87d6-b2cf3c4a6bd4',
-    tenantId:    '42f676c-f455-423c-82f6-dc2d99791af7',
+    tenantId:    '42f7676c-f455-423c-82f6-dc2d99791af7',
     // Must exactly match a Redirect URI registered in Azure App Registration
     // as platform type "Single-page application (SPA)"
     redirectUri: 'https://sanketkamble36.github.io/AI_Overhead_Management_2026/',
