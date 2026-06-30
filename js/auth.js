@@ -47,15 +47,17 @@ const msalConfig = {
 
 const msalInstance = new msal.PublicClientApplication(msalConfig);
 
-// handleRedirectPromise() must be called on every page load — required by MSAL
-// even when using popup mode. Clears any pending redirect state from the URL.
-const _initPromise = msalInstance.handleRedirectPromise().then(response => {
+// MSAL v3 requires initialize() before any other API call.
+// After initialize(), handle any pending redirect response.
+const _initPromise = msalInstance.initialize().then(() => {
+  return msalInstance.handleRedirectPromise();
+}).then(response => {
   if (response) {
     msalInstance.setActiveAccount(response.account);
     console.info('[Auth] Redirect response handled, account set.');
   }
 }).catch(err => {
-  console.error('[Auth] handleRedirectPromise error:', err);
+  console.error('[Auth] Init error:', err);
 });
 
 // ── Public API ────────────────────────────────────────────────────────────────
