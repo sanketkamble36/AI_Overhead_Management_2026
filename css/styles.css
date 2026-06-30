@@ -157,10 +157,11 @@
   top: 0;
   background: var(--sap-navy);
   color: #fff;
-  padding: 10px 14px;
+  padding: 11px 16px;
   text-align: left;
   font-weight: 600;
   font-size: 12px;
+  letter-spacing: 0.3px;
   white-space: nowrap;
   user-select: none;
 }
@@ -169,9 +170,13 @@
 #live-table thead th.sort-asc::after   { content: ' ↑'; opacity: 0.75; }
 #live-table thead th.sort-desc::after  { content: ' ↓'; opacity: 0.75; }
 
-#live-table tbody tr { border-bottom: 1px solid var(--sap-border); }
-#live-table tbody tr:hover { background: #F0F6FF; }
-#live-table tbody td { padding: 9px 14px; vertical-align: middle; }
+#live-table tbody td {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--sap-border);
+  vertical-align: middle;
+}
+#live-table tbody tr:nth-child(even) td { background: var(--sap-bg); }
+#live-table tbody tr:hover td           { background: #EEF4FD; }
 
 .live-empty {
   text-align: center;
