@@ -63,6 +63,32 @@ function renderCell(header, value) {
   return esc(value);
 }
 
+// ── Grouping ──────────────────────────────────────────────────────────────────
+
+const GROUP_ORDER = ['puc', 'tbd', 'pce'];
+const GROUP_LABELS = {
+  'puc': '▸ PuC-Led Agents',
+  'tbd': '▸ Still Alignment With PUC/PCE',
+  'pce': '▸ PCE-Led Agents',
+};
+
+function groupRows(rows) {
+  const groups = {};
+  rows.forEach(row => {
+    const key = (row['Led By'] || '').trim().toLowerCase();
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(row);
+  });
+
+  // Build ordered output: known groups first, then any others
+  const ordered = [];
+  GROUP_ORDER.forEach(k => { if (groups[k]) ordered.push([k, groups[k]]); });
+  Object.keys(groups).forEach(k => {
+    if (!GROUP_ORDER.includes(k)) ordered.push([k, groups[k]]);
+  });
+  return ordered;
+}
+
 // ── Sort + filter ─────────────────────────────────────────────────────────────
 
 function getVisibleRows() {
@@ -116,13 +142,30 @@ export function render() {
     const empty = tbody.insertRow();
     empty.innerHTML = `<td colspan="${_headers.length}" class="live-empty">No matching rows found.</td>`;
   } else {
-    rows.forEach(row => {
-      const r = tbody.insertRow();
-      _headers.forEach(h => {
-        const td = r.insertCell();
-        td.innerHTML = renderCell(h, row[h] || '');
+    // Only group when not actively sorting (sorting overrides grouping)
+    const useGroups = _sortCol === null;
+    if (useGroups) {
+      groupRows(rows).forEach(([key, groupRows]) => {
+        const label = GROUP_LABELS[key] || `▸ ${key.toUpperCase()}`;
+        const headerRow = tbody.insertRow();
+        headerRow.innerHTML = `<td colspan="${_headers.length}" style="background:#F3F8FF;font-weight:700;color:#1565C0;padding:6px 10px;font-size:12px;letter-spacing:.5px;">${label}</td>`;
+        groupRows.forEach(row => {
+          const r = tbody.insertRow();
+          _headers.forEach(h => {
+            const td = r.insertCell();
+            td.innerHTML = renderCell(h, row[h] || '');
+          });
+        });
       });
-    });
+    } else {
+      rows.forEach(row => {
+        const r = tbody.insertRow();
+        _headers.forEach(h => {
+          const td = r.insertCell();
+          td.innerHTML = renderCell(h, row[h] || '');
+        });
+      });
+    }
   }
 
   // Row count
