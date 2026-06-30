@@ -40,7 +40,7 @@ export const CONFIG = {
   // ── SharePoint / Excel ──────────────────────────────────────────────────────
   sharepoint: {
     // Known Site ID — stable, saves one extra Graph API call at startup
-    siteId:   '990ca898-242d-45b0-89e8-07d655473f4d',
+    siteId:   '789d099d-bb6c-4b54-8ae9-ff5d5d139f0f',
 
     // Path to the Excel file relative to the site's default document library root
     filePath: 'NEW - AS OF 2025/10_Team/30_Team Folders/Management Accounting & Revenue Recognition/AI/All-in On AI Wrokshop/AI_UseCase_Agents and Assistants.xlsx',
